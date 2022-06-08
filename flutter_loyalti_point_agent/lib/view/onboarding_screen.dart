@@ -47,8 +47,15 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               height: 48.0,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: primary5,
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    primary6,
+                  ),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
                 ),
                 onPressed: () {
                   Navigator.push(
