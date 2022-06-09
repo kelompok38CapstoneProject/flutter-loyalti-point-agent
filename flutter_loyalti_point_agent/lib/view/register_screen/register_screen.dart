@@ -39,18 +39,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 36.0),
+                const SizedBox(height: 63.0),
                 Text(
                   "Buat Akun Baru",
                   style: header1Bold.copyWith(color: primary6),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
-                  "Silahkan Buat Akun untuk terhubung dengan kami",
+                  "Silahkan Buat Akun untuk terhubung\ndengan kami",
                   style: body2Regular.copyWith(color: light9),
                 ),
                 const SizedBox(height: 24.0),
@@ -70,12 +70,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             prefixIcon:
                                 const Icon(Icons.person_outline_outlined),
                             hintText: "Nama Lengkap",
-                            hintStyle: body3Medium.copyWith(color: light9),
+                            hintStyle: body3Regular.copyWith(color: light9),
                             border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 16.0,
-                            ),
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -97,12 +93,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.mail_outline_outlined),
                             hintText: "Email",
-                            hintStyle: body3Medium.copyWith(color: light9),
+                            hintStyle: body3Regular.copyWith(color: light9),
                             border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 16.0,
-                            ),
                           ),
                           validator: (email) {
                             if (email!.isEmpty) {
@@ -124,12 +116,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.phone_outlined),
                             hintText: "Nomor Telephone",
-                            hintStyle: body3Medium.copyWith(color: light9),
+                            hintStyle: body3Regular.copyWith(color: light9),
                             border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 16.0,
-                            ),
                           ),
                           validator: (phoneNumber) {
                             if (phoneNumber!.isEmpty) {
@@ -152,26 +140,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           obscureText: !_passwordVisible,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.key_outlined),
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _passwordVisible = !_passwordVisible;
-                                });
-                              },
-                              icon: Icon(_passwordVisible
-                                  ? Icons.visibility_outlined
-                                  : Icons.visibility_off_outlined),
-                            ),
                             hintText: "Password",
-                            hintStyle: body3Medium.copyWith(color: light9),
+                            hintStyle: body3Regular.copyWith(color: light9),
                             border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 16.0,
-                            ),
                           ),
                           validator: (password) {
                             if (password!.isEmpty) {
+                              return 'Password tidak boleh kosong';
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 24.0),
+                      Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: light2,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        child: TextFormField(
+                          controller: _passwordController,
+                          keyboardType: TextInputType.text,
+                          obscureText: !_passwordVisible,
+                          decoration: InputDecoration(
+                            prefixIcon: const Icon(Icons.key_outlined),
+                            hintText: "Konfirmasi Password",
+                            hintStyle: body3Regular.copyWith(color: light9),
+                            border: InputBorder.none,
+                          ),
+                          validator: (confirmPassword) {
+                            if (confirmPassword!.isEmpty) {
                               return 'Password tidak boleh kosong';
                             }
                             return null;
@@ -206,19 +205,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         );
                       }
                     },
-                    child: const Text(
+                    child: Text(
                       "Daftar",
-                      style: TextStyle(
-                        color: white1,
-                      ),
+                      style: body3SemiBold.copyWith(color: white1),
                     ),
                   ),
                 ),
-                const SizedBox(height: 21.0),
+                const SizedBox(height: 16.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Sudah Punya Akun?"),
+                    const Text("Sudah Punya Akun?", style: body3Regular,),
                     TextButton(
                       onPressed: () {
                         Navigator.push(
@@ -230,13 +227,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         "Masuk",
-                        style: TextStyle(color: primary6),
+                        style: body3Medium.copyWith(color: primary6),
                       ),
                     ),
                   ],
                 ),
+                const SizedBox(height: 15.0),
+                Center(
+                  child: SizedBox(
+                    width: 155,
+                    height: 29,
+                    child: Image.asset("assets/images/logo.png"),
+                  ),
+                ),
+                const SizedBox(height: 31.0),
               ],
             ),
           ),

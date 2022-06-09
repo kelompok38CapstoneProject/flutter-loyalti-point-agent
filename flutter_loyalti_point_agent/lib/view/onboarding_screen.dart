@@ -9,23 +9,24 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
           children: [
-            const SizedBox(height: 114.0),
+            const SizedBox(height: 85.0),
             Center(
               child: Image.asset(
                 "assets/images/onboarding.png",
-                width: 315,
-                height: 307,
+                width: 343,
+                height: 334,
               ),
             ),
-            const SizedBox(height: 71.0),
+            const SizedBox(height: 25.0),
             Text(
-              "Tukarkan Point Anda",
+              "Hadiahi Dirimu atas Loyalitasmu",
               style: header1Bold.copyWith(color: primary6),
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 8.0),
+            const SizedBox(height: 6.0),
             Text(
               "Tukarkan poin anda dengan pulsa dan benefit lainnya.",
               style: body2Regular.copyWith(
@@ -33,9 +34,9 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: 40.0),
+            const SizedBox(height: 103.0),
             Container(
-              width: double.infinity,
+              width: 315.0,
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -65,9 +66,9 @@ class OnBoardingScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Text(
+                child: Text(
                   "Mulai",
-                  style: TextStyle(fontSize: 14.0),
+                  style: body2SemiBold.copyWith(color: white1),
                 ),
               ),
             ),

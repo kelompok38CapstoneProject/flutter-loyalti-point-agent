@@ -12,7 +12,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;
@@ -20,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     _nameController.dispose();
-    _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -37,18 +35,18 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30.0),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 36.0),
+                const SizedBox(height: 63.0),
                 Text(
                   "Masuk",
                   style: header1Bold.copyWith(color: primary6),
                 ),
                 const SizedBox(height: 8.0),
                 Text(
-                  "Silahkan login untuk terhubung dengan kami",
+                  "Silahkan login untuk terhubung dengan\nkami",
                   style: body2Regular.copyWith(color: light9),
                 ),
                 const SizedBox(height: 24.0),
@@ -67,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             prefixIcon:
                                 const Icon(Icons.person_outline_outlined),
-                            hintText: "No Telephone/Email",
+                            hintText: "Nama Lengkap",
                             hintStyle: body3Medium.copyWith(color: light9),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(
@@ -125,53 +123,61 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20.0),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Lupa Password?",
-                    style: body3Medium.copyWith(color: primary6),
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                SizedBox(
-                  width: double.infinity,
-                  height: 48.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        primary6,
+                const SizedBox(height: 8.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Lupa Password?",
+                        style: body3Medium.copyWith(color: primary6),
                       ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24.0),
+                Center(
+                  child: SizedBox(
+                    width: 315.0,
+                    height: 40.0,
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          primary6,
+                        ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        // if (_formKey.currentState!.validate()) {
+                        //   Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (context) => const BerandaScreen(),
+                        //     ),
+                        //   );
+                        // }
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                          builder: (context) {
+                            return const HomeScreen();
+                          },
+                        ), (route) => false);
+                      },
+                      child: const Text(
+                        "Masuk",
+                        style: TextStyle(
+                          color: white1,
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      // if (_formKey.currentState!.validate()) {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //       builder: (context) => const BerandaScreen(),
-                      //     ),
-                      //   );
-                      // }
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                        builder: (context) {
-                          return const HomeScreen();
-                        },
-                      ), (route) => false);
-                    },
-                    child: const Text(
-                      "Masuk",
-                      style: TextStyle(
-                        color: white1,
-                      ),
-                    ),
                   ),
                 ),
-                const SizedBox(height: 21.0),
+                const SizedBox(height: 16.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -185,12 +191,22 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       },
-                      child: const Text(
+                      child: Text(
                         "Daftar",
-                        style: TextStyle(color: primary6),
+                        style: body3Medium.copyWith(color: primary6),
                       ),
                     ),
                   ],
+                ),
+                const SizedBox(
+                  height: 180.0,
+                ),
+                Center(
+                  child: SizedBox(
+                    width: 155,
+                    height: 29,
+                    child: Image.asset("assets/images/logo.png"),
+                  ),
                 ),
               ],
             ),

@@ -14,12 +14,12 @@ class BerandaScreen extends StatelessWidget {
               children: [
                 Container(
                   decoration: const BoxDecoration(color: primary6),
-                  height: 135.0,
+                  height: 144.0,
                   width: double.infinity,
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 30.0, right: 30.0, top: 15.0),
+                      const EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
                   child: Column(
                     children: [
                       Row(
@@ -102,7 +102,7 @@ class BerandaScreen extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.only(left: 30.0, right: 30.0, top: 25.0),
+                  const EdgeInsets.only(left: 16.0, right: 16.0, top: 14.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -112,31 +112,117 @@ class BerandaScreen extends StatelessWidget {
                       color: secondary6,
                     ),
                   ),
-                  const SizedBox(height: 16.0),
-                  Container(
-                    decoration: BoxDecoration(color: primary8),
+                  const SizedBox(height: 24.0),
+                  SizedBox(
                     width: double.infinity,
-                    height: 63.0,
+                    height: 110.0,
+                    child: Center(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 4,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                const CircleAvatar(
+                                  backgroundColor: primary1,
+                                  radius: 32.0,
+                                  child: Icon(
+                                    Icons.phone_android_outlined,
+                                    size: 52.0,
+                                    color: secondary6,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 6.0,
+                                ),
+                                Text(
+                                  "Pesan",
+                                  style:
+                                      body4SemiBold.copyWith(color: secondary6),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 30.0),
+                  Text(
+                    "Promo Banner",
+                    style: body2SemiBold.copyWith(
+                      color: secondary6,
+                    ),
+                  ),
+                  const SizedBox(height: 10.0),
+                  Container(
+                    decoration: const BoxDecoration(color: secondary1),
+                    height: 150,
                     child: ListView.builder(
                       shrinkWrap: true,
+                      itemCount: 2,
                       scrollDirection: Axis.horizontal,
-                      itemCount: 4,
                       itemBuilder: (context, index) {
-                        return Column(
-                          children: const [
-                            CircleAvatar(
-                              // radius: 63.0,
-                              backgroundColor: primary1,
-                              child: Icon(
-                                Icons.phone,
-                              ),
-                            ),
-                            Text("Pesan"),
-                          ],
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 20.0),
+                          child: Image.asset("assets/images/carousel1.png"),
                         );
                       },
                     ),
                   ),
+                  const SizedBox(height: 44.0),
+                  Text(
+                    "Info",
+                    style: body2SemiBold.copyWith(
+                      color: secondary6,
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  SizedBox(
+                    height: 96.0,
+                    width: double.infinity,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            const Expanded(
+                              flex: 1,
+                              child: Icon(Icons.calendar_month_outlined,
+                                  color: secondary6, size: 40.0),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text(
+                                    "Cara Redeem Benefit",
+                                    style: body2Medium,
+                                  ),
+                                  const SizedBox(
+                                    height: 2.0,
+                                  ),
+                                  Text(
+                                    "Udah mengumpulkan banyak poin, tapi masih bingung cara tukernya? Yuk baca dulu...",
+                                    style: body5Regular.copyWith(color: dark1),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 38.0),
                 ],
               ),
             ),
