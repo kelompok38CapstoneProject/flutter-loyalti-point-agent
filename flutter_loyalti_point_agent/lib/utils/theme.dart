@@ -33,16 +33,26 @@ const Color success7 = Color(0xFF52A719);
 const Color success8 = Color(0xFF418614);
 const Color success9 = Color(0xFF31650F);
 
-//WARNING
-const Color warning1 = Color(0xFFFCD6D6);
-const Color warning2 = Color(0xFFFBBABA);
-const Color warning3 = Color(0xFFF89797);
-const Color warning4 = Color(0xFFF67575);
-const Color warning5 = Color(0xFFF45353);
-const Color warning6 = Color(0xFFF23030);
-const Color warning7 = Color(0xFFF23030);
-const Color warning8 = Color(0xFFCA2828);
-const Color warning9 = Color(0xFFA12020);
+const Color warning1 = Color(0xFFFFF9CC);
+const Color warning2 = Color(0xFFFFF5AA);
+const Color warning3 = Color(0xFFFFF080);
+const Color warning4 = Color(0xFFFFEB55);
+const Color warning5 = Color(0xFFFFE62B);
+const Color warning6 = Color(0xFFFFE100);
+const Color warning7 = Color(0xFFD4BB00);
+const Color warning8 = Color(0xFFAA9600);
+const Color warning9 = Color(0xFF807100);
+
+//DANGER
+const Color danger1 = Color(0xFFFCD6D6);
+const Color danger2 = Color(0xFFFBBABA);
+const Color danger3 = Color(0xFFF89797);
+const Color danger4 = Color(0xFFF67575);
+const Color danger5 = Color(0xFFF45353);
+const Color danger6 = Color(0xFFF23030);
+const Color danger7 = Color(0xFFF23030);
+const Color danger8 = Color(0xFFCA2828);
+const Color danger9 = Color(0xFFA12020);
 
 // LIGHT
 const Color light1 = Color(0xFFFEFEFE);

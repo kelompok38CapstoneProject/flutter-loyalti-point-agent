@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
-import 'package:flutter_loyalti_point_agent/view/bottombar_screen/beranda_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
+import 'package:flutter_loyalti_point_agent/widgets/success_alert.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -197,11 +197,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const BerandaScreen(),
-                          ),
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const SuccessAlert();
+                          },
                         );
                       }
                     },
@@ -215,7 +215,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Sudah Punya Akun?", style: body3Regular,),
+                    const Text(
+                      "Sudah Punya Akun?",
+                      style: body3Regular,
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.push(

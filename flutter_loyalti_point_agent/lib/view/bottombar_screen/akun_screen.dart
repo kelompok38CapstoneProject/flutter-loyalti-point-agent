@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/akun_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
+import 'package:flutter_loyalti_point_agent/view/akun_menu_screen/hubungi_kami_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
 
 class AkunScreen extends StatelessWidget {
@@ -55,7 +56,7 @@ class AkunScreen extends StatelessWidget {
                                     const Icon(
                                       Icons.paid_outlined,
                                       size: 36,
-                                      color: secondary6,
+                                      color: warning5,
                                     ),
                                     const SizedBox(height: 7.0),
                                     Text(
@@ -78,7 +79,7 @@ class AkunScreen extends StatelessWidget {
                                     const Icon(
                                       Icons.star_half_rounded,
                                       size: 36,
-                                      color: secondary6,
+                                      color: warning5,
                                     ),
                                     const SizedBox(height: 7.0),
                                     Text(
@@ -104,7 +105,6 @@ class AkunScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Card(
-                    color: primary1,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -138,7 +138,15 @@ class AkunScreen extends StatelessWidget {
                                     ],
                                   ),
                                   IconButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const HubungiKami(),
+                                        ),
+                                      );
+                                    },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios,
                                       color: secondary6,
@@ -165,7 +173,6 @@ class AkunScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Card(
-                    color: primary1,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
