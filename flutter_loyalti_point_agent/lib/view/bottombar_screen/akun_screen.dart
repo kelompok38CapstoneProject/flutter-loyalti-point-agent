@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/akun_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
-import 'package:flutter_loyalti_point_agent/view/akun_menu_screen/hubungi_kami_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
 
 class AkunScreen extends StatelessWidget {
@@ -143,7 +142,7 @@ class AkunScreen extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              const HubungiKami(),
+                                              akunModel.halaman,
                                         ),
                                       );
                                     },

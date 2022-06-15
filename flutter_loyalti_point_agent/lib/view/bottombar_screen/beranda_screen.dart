@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/models/redeem_benefit_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
+import 'package:flutter_loyalti_point_agent/widgets/point_widget.dart';
 
 class BerandaScreen extends StatelessWidget {
   const BerandaScreen({Key? key}) : super(key: key);
@@ -49,52 +51,7 @@ class BerandaScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16.0),
-                      Container(
-                        width: double.infinity,
-                        height: 41.0,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
-                          color: white1,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 13.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.lightbulb_circle_outlined,
-                                    color: Color(0XFFFBE192),
-                                  ),
-                                  const SizedBox(width: 12.0),
-                                  Text(
-                                    "Poin",
-                                    style: body4SemiBold.copyWith(
-                                        color: secondary6),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                    "10.000",
-                                    style: body4SemiBold.copyWith(
-                                        color: secondary6),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      // print("A");
-                                    },
-                                    icon: const Icon(
-                                        Icons.chevron_right_outlined),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                      const PointWidget(),
                     ],
                   ),
                 ),
@@ -122,28 +79,40 @@ class BerandaScreen extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         itemCount: 4,
                         itemBuilder: (context, index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                const CircleAvatar(
-                                  backgroundColor: primary1,
-                                  radius: 32.0,
-                                  child: Icon(
-                                    Icons.phone_android_outlined,
-                                    size: 52.0,
-                                    color: secondary6,
+                          RedeemBenefitModel redeemBenefitModel =
+                              listRedeemBenefitModel[index];
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        redeemBenefitModel.screen),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundColor: primary1,
+                                    radius: 32.0,
+                                    child: Icon(
+                                      redeemBenefitModel.icon,
+                                      size: 52.0,
+                                      color: secondary6,
+                                    ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 6.0,
-                                ),
-                                Text(
-                                  "Pesan",
-                                  style:
-                                      body4SemiBold.copyWith(color: secondary6),
-                                ),
-                              ],
+                                  const SizedBox(
+                                    height: 6.0,
+                                  ),
+                                  Text(
+                                    redeemBenefitModel.name,
+                                    style: body4SemiBold.copyWith(
+                                        color: secondary6),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         },
