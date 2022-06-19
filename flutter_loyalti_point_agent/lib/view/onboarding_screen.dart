@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/register_screen.dart';
@@ -73,6 +75,49 @@ class OnBoardingScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  
+  void startSplashScreen() {
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+          builder: (context) {
+            return const OnBoardingScreen();
+          },
+        ), (route) => false);
+      },
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startSplashScreen();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: primary6,
+      body: Center(
+        child: SizedBox(
+          width: 200,
+          height: double.infinity,
+          child: Image.asset("assets/images/logo.png"),
         ),
       ),
     );

@@ -10,21 +10,13 @@ class HubungiKami extends StatefulWidget {
 }
 
 class _HubungiKamiState extends State<HubungiKami> {
-  final TextEditingController _namaController = TextEditingController();
-
   final TextEditingController _emailController = TextEditingController();
-
-  final TextEditingController _phoneNumberController = TextEditingController();
-
   final TextEditingController _pesanController = TextEditingController();
-
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    _namaController.dispose();
     _emailController.dispose();
-    _phoneNumberController.dispose();
     _pesanController.dispose();
     super.dispose();
   }
@@ -56,29 +48,6 @@ class _HubungiKamiState extends State<HubungiKami> {
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: TextFormField(
-                      controller: _namaController,
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.person_outline_outlined),
-                        hintText: "Nama Lengkap",
-                        hintStyle: body3Regular.copyWith(color: light9),
-                        border: InputBorder.none,
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Nama Lengkap tidak boleh kosong';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 24.0),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: light2,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: TextFormField(
                       controller: _emailController,
                       decoration: InputDecoration(
                         prefixIcon: const Icon(Icons.mail_outline_outlined),
@@ -89,29 +58,6 @@ class _HubungiKamiState extends State<HubungiKami> {
                       validator: (email) {
                         if (email!.isEmpty) {
                           return 'Email tidak boleh kosong';
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                  const SizedBox(height: 24.0),
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: light2,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: TextFormField(
-                      controller: _phoneNumberController,
-                      decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.phone_outlined),
-                        hintText: "Nomor Telephone",
-                        hintStyle: body3Regular.copyWith(color: light9),
-                        border: InputBorder.none,
-                      ),
-                      validator: (phoneNumber) {
-                        if (phoneNumber!.isEmpty) {
-                          return 'phoneNumber tidak boleh kosong';
                         }
                         return null;
                       },

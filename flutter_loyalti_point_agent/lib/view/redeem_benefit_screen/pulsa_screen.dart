@@ -36,15 +36,17 @@ class PulsaScreen extends StatelessWidget {
                   style: body2SemiBold.copyWith(color: secondary6),
                 ),
                 const SizedBox(height: 16.0),
-                Container(
-                  height: 300,
+                SizedBox(
+                  height: 350,
                   child: GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisSpacing: 46.0,
+                            mainAxisSpacing: 16.0,
                             crossAxisCount: 2),
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return PilihPulsa();
+                      return const PilihPulsa();
                     },
                   ),
                 ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/view/redeem_benefit_screen/cash_out_screen.dart';
+import 'package:flutter_loyalti_point_agent/view/redeem_benefit_screen/paket_data_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/redeem_benefit_screen/pulsa_screen.dart';
 
 import '../view/redeem_benefit_screen/emoney_screen.dart';
@@ -20,9 +22,9 @@ var listRedeemBenefitModel = [
   RedeemBenefitModel(
       icon: Icons.screenshot_outlined,
       name: "Paket Data",
-      screen: const PulsaScreen()),
+      screen: const PaketData()),
   RedeemBenefitModel(
       icon: Icons.vertical_shades_closed_outlined,
       name: "Cash-Out",
-      screen: const PulsaScreen()),
+      screen: const CashOutScreen()),
 ];
