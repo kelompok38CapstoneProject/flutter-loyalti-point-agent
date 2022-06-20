@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
 import '../utils/theme.dart';
-import '../view/register_screen/login_screen.dart';
 
 class SuccessAlert extends StatelessWidget {
-  const SuccessAlert({Key? key}) : super(key: key);
+  const SuccessAlert(
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.descriptionButton,
+      required this.halaman})
+      : super(key: key);
+
+  final String title;
+  final String description;
+  final String descriptionButton;
+  final Widget halaman;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +23,7 @@ class SuccessAlert extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
       ),
       title: Text(
-        "Sukses",
+        title,
         style: body2Medium.copyWith(color: black1),
         textAlign: TextAlign.center,
       ),
@@ -30,7 +40,7 @@ class SuccessAlert extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             Text(
-              "Selamat!\nPendaftaran anda berhasil",
+              description,
               style: body2Medium.copyWith(color: black1),
               textAlign: TextAlign.center,
             ),
@@ -50,16 +60,14 @@ class SuccessAlert extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const LoginScreen();
-                      },
-                    ),
-                  );
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
+                    builder: (context) {
+                      return halaman;
+                    },
+                  ), (route) => false);
                 },
                 child: Text(
-                  "Konfirmasi",
+                  descriptionButton,
                   style: body3Medium.copyWith(color: white1),
                 ),
               ),

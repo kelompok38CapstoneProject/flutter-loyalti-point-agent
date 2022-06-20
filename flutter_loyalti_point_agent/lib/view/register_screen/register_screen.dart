@@ -200,7 +200,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return const SuccessAlert();
+                            return const SuccessAlert(
+                              title: "Sukses",
+                              description: "Selamat\nPendaftaran anda berhasil",
+                              descriptionButton: "Konfirmasi",
+                              halaman: LoginScreen(),
+                            );
                           },
                         );
                       }

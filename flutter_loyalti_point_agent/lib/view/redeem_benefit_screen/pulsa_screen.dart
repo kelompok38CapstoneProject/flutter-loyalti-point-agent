@@ -10,48 +10,33 @@ class PulsaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: primary6,
-          title: Text(
-            'Redeem Pulsa',
-            style: body2SemiBold.copyWith(color: white1),
-          ),
-          centerTitle: true,
-          toolbarHeight: 72.0,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: primary6,
+        title: Text(
+          'Redeem Pulsa',
+          style: body2SemiBold.copyWith(color: white1),
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const PointTopUp(),
-                const SizedBox(height: 24.0),
-                const SearchNumber(),
-                const SizedBox(height: 24.0),
-                Text(
-                  "Pilih Pulsa",
-                  style: body2SemiBold.copyWith(color: secondary6),
-                ),
-                const SizedBox(height: 16.0),
-                SizedBox(
-                  height: 350,
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisSpacing: 46.0,
-                            mainAxisSpacing: 16.0,
-                            crossAxisCount: 2),
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return const PilihPulsa();
-                    },
-                  ),
-                ),
-              ],
-            ),
+        centerTitle: true,
+        toolbarHeight: 72.0,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const PointTopUp(),
+              const SizedBox(height: 24.0),
+              const SearchNumber(),
+              const SizedBox(height: 24.0),
+              Text(
+                "Pilih Pulsa",
+                style: body2SemiBold.copyWith(color: secondary6),
+              ),
+              const SizedBox(height: 16.0),
+              const PilihPulsa(),
+            ],
           ),
         ),
       ),
