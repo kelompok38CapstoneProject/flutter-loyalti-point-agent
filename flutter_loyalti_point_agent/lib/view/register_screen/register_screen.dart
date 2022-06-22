@@ -113,6 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         child: TextFormField(
                           controller: _phoneNumberController,
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.phone_outlined),
                             hintText: "Nomor Telephone",

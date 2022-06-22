@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/register_screen.dart';
+import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -14,7 +16,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool _passwordVisible = false;
 
   @override
   void dispose() {
@@ -23,14 +24,16 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  @override
-  void initState() {
-    _passwordVisible = false;
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   _passwordVisible = false;
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    var providerPassword = Provider.of<PasswordProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -88,36 +91,36 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: light2,
                           borderRadius: BorderRadius.circular(10.0),
                         ),
-                        child: TextFormField(
-                          controller: _passwordController,
-                          keyboardType: TextInputType.text,
-                          obscureText: !_passwordVisible,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.key_outlined),
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  _passwordVisible = !_passwordVisible;
-                                });
-                              },
-                              icon: Icon(_passwordVisible
-                                  ? Icons.visibility_outlined
-                                  : Icons.visibility_off_outlined),
+                        child: Consumer(
+                          builder: (context, value, child) => TextFormField(
+                            controller: _passwordController,
+                            keyboardType: TextInputType.text,
+                            obscureText: !providerPassword.passwordVisible,
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(Icons.key_outlined),
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  providerPassword.getPassword();
+                                },
+                                icon: Icon(providerPassword.passwordVisible
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined),
+                              ),
+                              hintText: "Password",
+                              hintStyle: body3Medium.copyWith(color: light9),
+                              border: InputBorder.none,
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                                vertical: 16.0,
+                              ),
                             ),
-                            hintText: "Password",
-                            hintStyle: body3Medium.copyWith(color: light9),
-                            border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16.0,
-                              vertical: 16.0,
-                            ),
+                            validator: (password) {
+                              if (password!.isEmpty) {
+                                return 'Nama Lengkap tidak boleh kosong';
+                              }
+                              return null;
+                            },
                           ),
-                          validator: (password) {
-                            if (password!.isEmpty) {
-                              return 'Nama Lengkap tidak boleh kosong';
-                            }
-                            return null;
-                          },
                         ),
                       ),
                     ],

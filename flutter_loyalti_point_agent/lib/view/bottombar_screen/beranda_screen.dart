@@ -127,8 +127,7 @@ class BerandaScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 10.0),
-                  Container(
-                    decoration: const BoxDecoration(color: secondary1),
+                  SizedBox(
                     height: 150,
                     child: ListView.builder(
                       shrinkWrap: true,

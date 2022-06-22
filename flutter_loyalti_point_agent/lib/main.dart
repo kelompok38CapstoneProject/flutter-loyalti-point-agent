@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/view/onboarding_screen.dart';
+import 'package:flutter_loyalti_point_agent/view_model/bottombar_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,13 +14,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: "Poppins",
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => BottombarProvider(),
+        ),
+        ChangeNotifierProvider(create: (context) => PasswordProvider(),)
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: "Poppins",
+        ),
+        home: const SplashScreen(),
       ),
-      home: const SplashScreen(),
     );
   }
 }

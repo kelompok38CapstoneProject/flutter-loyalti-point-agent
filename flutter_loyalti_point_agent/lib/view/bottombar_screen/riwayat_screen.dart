@@ -28,15 +28,19 @@ class RiwayatScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 24.0),
+                      Container(
+                        height: 24.0,
+                        width: double.infinity,
+                        decoration: const BoxDecoration(color: white1),
+                        child: const Text("A"),
+                      ),
                     ],
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SizedBox(
-                  height: 520.0,
-                  width: 342,
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: ListView.builder(
                     itemCount: 4,
                     itemBuilder: (context, index) => Column(
