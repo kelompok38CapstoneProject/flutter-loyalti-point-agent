@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
-import 'package:flutter_loyalti_point_agent/view/home_screen.dart';
+import 'package:flutter_loyalti_point_agent/view/bottombar_screen/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/register_screen.dart';
 import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
 import 'package:provider/provider.dart';

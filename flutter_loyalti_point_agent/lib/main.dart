@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loyalti_point_agent/view/onboarding_screen.dart';
+import 'package:flutter_loyalti_point_agent/view/register_screen/onboarding_screen.dart';
 import 'package:flutter_loyalti_point_agent/view_model/bottombar_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
 import 'package:provider/provider.dart';

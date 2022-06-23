@@ -28,7 +28,11 @@ class PulsaScreen extends StatelessWidget {
             children: [
               const PointTopUp(),
               const SizedBox(height: 24.0),
-              const SearchNumber(),
+              const SearchNumber(
+                provider: "Provider: ",
+                namaProvider: "Telkomsel",
+                imageUrl: "assets/images/telkomsel.png",
+              ),
               const SizedBox(height: 24.0),
               Text(
                 "Pilih Pulsa",

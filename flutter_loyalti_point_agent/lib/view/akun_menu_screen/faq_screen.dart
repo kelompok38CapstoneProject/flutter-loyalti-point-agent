@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_loyalti_point_agent/models/faq_model.dart';
 import '../../utils/theme.dart';
+import 'package:accordion/accordion.dart';
 
-class PertanyaanFAQ extends StatelessWidget {
+class PertanyaanFAQ extends StatefulWidget {
   const PertanyaanFAQ({Key? key}) : super(key: key);
 
+  @override
+  State<PertanyaanFAQ> createState() => _PertanyaanFAQState();
+}
+
+class _PertanyaanFAQState extends State<PertanyaanFAQ> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,8 +54,9 @@ class PertanyaanFAQ extends StatelessWidget {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: 3,
+                itemCount: listPertanyaan.length,
                 itemBuilder: (context, index) {
+                  final FaqModel faqModel = listPertanyaan[index];
                   return Card(
                     elevation: 2.0,
                     child: SizedBox(
@@ -64,12 +71,100 @@ class PertanyaanFAQ extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  "Login/Register",
+                                  faqModel.judul,
                                   style:
                                       body3Medium.copyWith(color: secondary6),
                                 ),
                                 IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      context: context,
+                                      builder: (context) {
+                                        return FractionallySizedBox(
+                                          heightFactor: 0.8,
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 23.5,
+                                                vertical: 29.0),
+                                            child: Column(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    IconButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      icon: const Icon(Icons
+                                                          .chevron_left_outlined),
+                                                    ),
+                                                    Text(
+                                                      faqModel.judul,
+                                                      style:
+                                                          body2Medium.copyWith(
+                                                        color: secondary6,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Accordion(
+                                                  headerBackgroundColor: secondary3,
+                                                  headerBackgroundColorOpened: secondary1,
+                                                  maxOpenSections: 1,
+                                                  children: [
+                                                    AccordionSection(
+                                                      isOpen: true,
+                                                      header: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 15.0),
+                                                        child: Text(
+                                                          faqModel.pertanyaan1,
+                                                          style: body4Medium
+                                                              .copyWith(
+                                                                  color: dark5),
+                                                        ),
+                                                      ),
+                                                      headerBorderRadius: 5.0,
+                                                      contentBorderWidth: 1,
+                                                      contentBorderColor:
+                                                          light5,
+                                                      contentBorderRadius: 5.0,
+                                                      content: const Text(
+                                                          'This is the introduction right here ...'),
+                                                    ),
+                                                    AccordionSection(
+                                                      isOpen: true,
+                                                      header: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 15.0),
+                                                        child: Text(
+                                                          faqModel.pertanyaan2,
+                                                          style: body4Medium
+                                                              .copyWith(
+                                                                  color: dark5),
+                                                        ),
+                                                      ),
+                                                      headerBorderRadius: 5.0,
+                                                      contentBorderWidth: 1,
+                                                      contentBorderColor:
+                                                          light5,
+                                                      contentBorderRadius: 5.0,
+                                                      content: const Text(
+                                                          'This is the introduction right here ...'),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                   icon: const Icon(Icons.arrow_forward_ios,
                                       color: secondary6),
                                 ),
@@ -80,40 +175,22 @@ class PertanyaanFAQ extends StatelessWidget {
                             ),
                             Expanded(
                               child: Text(
-                                "Bagaimana caraku registrasi?",
+                                faqModel.pertanyaan1,
                                 style: body4Regular.copyWith(color: dark1),
                               ),
                             ),
                             const SizedBox(height: 25.0),
                             Expanded(
                               child: Text(
-                                "Mengapa saya harus login?",
+                                faqModel.pertanyaan2,
                                 style: body4Regular.copyWith(color: dark1),
                               ),
                             ),
                             const SizedBox(height: 25.0),
                             Expanded(
                               child: Text(
-                                "Mengapa nomor telephone diperlukan saat men...?",
+                                faqModel.pertanyaan2,
                                 style: body4Regular.copyWith(color: dark1),
-                              ),
-                            ),
-                            Center(
-                              child: TextButton(
-                                onPressed: () {
-                                  showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      context: context,
-                                      builder: (context) {
-                                        return FractionallySizedBox(
-                                            heightFactor: 0.8,
-                                            child: Container());
-                                      });
-                                },
-                                child: Text(
-                                  "lihat selengkapnya",
-                                  style: body5Regular.copyWith(color: primary6),
-                                ),
                               ),
                             ),
                           ],

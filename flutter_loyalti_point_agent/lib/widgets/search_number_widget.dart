@@ -3,14 +3,22 @@ import 'package:flutter/material.dart';
 import '../utils/theme.dart';
 
 class SearchNumber extends StatefulWidget {
-  const SearchNumber({Key? key}) : super(key: key);
+  const SearchNumber(
+      {Key? key,
+      required this.provider,
+      required this.namaProvider,
+      required this.imageUrl})
+      : super(key: key);
+
+  final String provider;
+  final String namaProvider;
+  final String imageUrl;
 
   @override
   State<SearchNumber> createState() => _SearchNumberState();
 }
 
 class _SearchNumberState extends State<SearchNumber> {
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,8 +38,7 @@ class _SearchNumberState extends State<SearchNumber> {
       child: Column(
         children: [
           Padding(
-            padding:
-                const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
             child: Column(
               children: [
                 Row(
@@ -52,14 +59,15 @@ class _SearchNumberState extends State<SearchNumber> {
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.only(left:10.0),
+                          padding: const EdgeInsets.only(left: 10.0),
                           child: Form(
                             child: TextFormField(
                               keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: "Nomor Handphone",
-                                hintStyle: body4Regular.copyWith(color: secondary6),
+                                hintStyle:
+                                    body4Regular.copyWith(color: secondary6),
                               ),
                             ),
                           ),
@@ -90,11 +98,11 @@ class _SearchNumberState extends State<SearchNumber> {
                   Row(
                     children: [
                       Text(
-                        "Provider: ",
+                        widget.provider,
                         style: body4Regular.copyWith(color: white1),
                       ),
                       Text(
-                        "Telkomsel",
+                        widget.namaProvider,
                         style: body4Bold.copyWith(color: white1),
                       ),
                     ],
@@ -106,7 +114,7 @@ class _SearchNumberState extends State<SearchNumber> {
                       color: white1,
                       borderRadius: BorderRadius.circular(5.0),
                     ),
-                    child: Image.asset("assets/images/telkomsel.png"),
+                    child: Image.asset(widget.imageUrl),
                   ),
                 ],
               ),

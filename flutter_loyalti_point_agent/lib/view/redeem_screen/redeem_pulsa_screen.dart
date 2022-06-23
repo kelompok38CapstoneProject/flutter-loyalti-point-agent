@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loyalti_point_agent/view/home_screen.dart';
+import 'package:flutter_loyalti_point_agent/view/bottombar_screen/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/widgets/ringkasan_redeem_widget.dart';
 import 'package:flutter_loyalti_point_agent/widgets/success_alert.dart';
 

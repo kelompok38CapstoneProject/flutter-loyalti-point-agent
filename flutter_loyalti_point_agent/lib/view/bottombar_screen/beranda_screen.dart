@@ -76,26 +76,28 @@ class BerandaScreen extends StatelessWidget {
                     child: Center(
                       child: ListView.builder(
                         shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
                         scrollDirection: Axis.horizontal,
-                        itemCount: 4,
+                        itemCount: listRedeemBenefitModel.length,
                         itemBuilder: (context, index) {
                           RedeemBenefitModel redeemBenefitModel =
                               listRedeemBenefitModel[index];
-                          return InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        redeemBenefitModel.screen),
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                          return Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          redeemBenefitModel.screen),
+                                );
+                              },
                               child: Column(
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: primary1,
+                                    backgroundColor: white1,
                                     radius: 32.0,
                                     child: Icon(
                                       redeemBenefitModel.icon,
