@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/onboarding_screen.dart';
 import 'package:flutter_loyalti_point_agent/view_model/bottombar_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/carousel_slider_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => BottombarProvider(),
         ),
-        ChangeNotifierProvider(create: (context) => PasswordProvider(),)
+        ChangeNotifierProvider(
+          create: (context) => PasswordProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CarouselProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

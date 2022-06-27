@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/dompet_digital_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
+import 'package:flutter_loyalti_point_agent/view/redeem_screen/redeem_emoney_screen.dart';
 import 'package:flutter_loyalti_point_agent/widgets/point_topup_widget.dart';
 import 'package:flutter_loyalti_point_agent/widgets/search_number_widget.dart';
-
-import '../redeem_screen/redeem_paket_screen.dart';
 
 class EmoneyScreen extends StatelessWidget {
   const EmoneyScreen({Key? key}) : super(key: key);
@@ -91,94 +90,92 @@ class EmoneyScreen extends StatelessWidget {
               SizedBox(
                 height: 400.0,
                 width: double.infinity,
-                child: Expanded(
-                  child: ListView.builder(
-                    itemCount: 5,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const RedeemPaketScreen(),
-                            ),
-                          );
-                        },
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const RedeemEmoney(),
                           ),
-                          elevation: 2.0,
-                          child: SizedBox(
-                            height: 177.0,
-                            width: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                        );
+                      },
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        elevation: 2.0,
+                        child: SizedBox(
+                          height: 177.0,
+                          width: double.infinity,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Image.asset(
+                                    "assets/images/gopay.png",
+                                    height: 30,
+                                  ),
+                                  Container(
+                                    width: 87,
+                                    height: 27,
+                                    decoration: const BoxDecoration(
+                                      color: primary6,
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(10.0),
+                                        topRight: Radius.circular(10.0),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "- 5000 Poin",
+                                        style: body5Regular.copyWith(
+                                            color: white1),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Image.asset(
-                                      "assets/images/telkomsel.png",
-                                      height: 30,
+                                    const SizedBox(height: 20.0),
+                                    Text(
+                                      "Gopay 5.000",
+                                      style: body3SemiBold.copyWith(
+                                          color: secondary6),
                                     ),
-                                    Container(
-                                      width: 87,
-                                      height: 27,
-                                      decoration: const BoxDecoration(
-                                        color: primary6,
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(10.0),
-                                          topRight: Radius.circular(10.0),
-                                        ),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "- 5000 Poin",
-                                          style: body5Regular.copyWith(
-                                              color: white1),
-                                        ),
-                                      ),
+                                    const SizedBox(height: 5.0),
+                                    Text(
+                                      "Tukarkan poinmu dan dapatkan saldo Gopay  sebesar 10.000.",
+                                      style: body5Regular.copyWith(
+                                          color: light10),
                                     ),
+                                    const SizedBox(height: 45.0),
+                                    Text(
+                                      "Tersedia: 100/100",
+                                      style: body4Medium.copyWith(
+                                          color: secondary6),
+                                    )
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 16.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(height: 50.0),
-                                      Text(
-                                        "Paket Internet 500 MB",
-                                        style: body3SemiBold.copyWith(
-                                            color: secondary6),
-                                      ),
-                                      const SizedBox(height: 5.0),
-                                      Text(
-                                        "Paket data internet 1GB memiliki masa aktif 30 hari.",
-                                        style: body5Regular.copyWith(
-                                            color: light10),
-                                      ),
-                                      const SizedBox(height: 25.0),
-                                      Text(
-                                        "Tersedia: 100/100",
-                                        style: body4Medium.copyWith(
-                                            color: secondary6),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ],

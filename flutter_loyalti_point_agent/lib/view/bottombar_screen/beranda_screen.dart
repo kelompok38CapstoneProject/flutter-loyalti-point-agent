@@ -1,13 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/redeem_benefit_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
+import 'package:flutter_loyalti_point_agent/view_model/carousel_slider_provider.dart';
 import 'package:flutter_loyalti_point_agent/widgets/point_widget.dart';
+import 'package:provider/provider.dart';
 
-class BerandaScreen extends StatelessWidget {
+class BerandaScreen extends StatefulWidget {
   const BerandaScreen({Key? key}) : super(key: key);
 
   @override
+  State<BerandaScreen> createState() => _BerandaScreenState();
+}
+
+class _BerandaScreenState extends State<BerandaScreen> {
+  List<Widget> indicators(imagesLength, currentIndex) {
+    return List<Widget>.generate(
+      imagesLength,
+      (index) {
+        return Container(
+          margin: const EdgeInsets.all(3),
+          width: 10,
+          height: 10,
+          decoration: BoxDecoration(
+              color: currentIndex == index ? Colors.black : Colors.black26,
+              shape: BoxShape.circle),
+        );
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var providerCarousel = Provider.of<CarouselProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -131,19 +155,27 @@ class BerandaScreen extends StatelessWidget {
                   const SizedBox(height: 10.0),
                   SizedBox(
                     height: 150,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: 2,
+                    child: PageView.builder(
+                      onPageChanged: (page) {
+                        // setState(() {
+                        //   _current = page;
+                        // });
+                        providerCarousel.getCurrent(page);
+                      },
+                      itemCount: providerCarousel.images.length,
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(right: 20.0),
-                          child: Image.asset("assets/images/carousel1.png"),
-                        );
+                        return Image.asset(providerCarousel.images[index]);
                       },
                     ),
                   ),
-                  const SizedBox(height: 44.0),
+                  const SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: indicators(providerCarousel.images.length,
+                        providerCarousel.current),
+                  ),
+                  const SizedBox(height: 24.0),
                   Text(
                     "Info",
                     style: body2SemiBold.copyWith(
