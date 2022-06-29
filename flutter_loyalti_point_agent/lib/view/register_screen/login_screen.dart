@@ -1,9 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
+import 'package:flutter_loyalti_point_agent/view/bottombar_screen/beranda_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/bottombar_screen/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/register_screen.dart';
 import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/services/register_dio.dart';
 import 'package:provider/provider.dart';
+import '../../models/login_model.dart';
+import '../../view_model/services/login_dio.dart';
+import '../../widgets/success_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -13,13 +20,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    _nameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -33,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     var providerPassword = Provider.of<PasswordProvider>(context);
+    LoginModel loginModel;
 
     return Scaffold(
       body: SafeArea(
@@ -64,11 +72,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: TextFormField(
-                          controller: _nameController,
+                          controller: _emailController,
                           decoration: InputDecoration(
-                            prefixIcon:
-                                const Icon(Icons.person_outline_outlined),
-                            hintText: "Nama Lengkap",
+                            prefixIcon: const Icon(Icons.email_outlined),
+                            hintText: "Email",
                             hintStyle: body3Medium.copyWith(color: light9),
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(
@@ -78,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           validator: (value) {
                             if (value!.isEmpty) {
-                              return 'Nama Lengkap tidak boleh kosong';
+                              return 'Email tidak boleh kosong';
                             }
                             return null;
                           },
@@ -115,8 +122,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             validator: (password) {
-                              if (password!.isEmpty) {
-                                return 'Nama Lengkap tidak boleh kosong';
+                              if (password!.isEmpty && password.length < 10) {
+                                return 'Minimal 10 character';
                               }
                               return null;
                             },
@@ -156,20 +163,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      onPressed: () {
-                        // if (_formKey.currentState!.validate()) {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => const BerandaScreen(),
-                        //     ),
-                        //   );
-                        // }
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-                          builder: (context) {
-                            return const HomeScreen();
-                          },
-                        ), (route) => false);
+                      onPressed: () async {
+                        LoginModel? result =await Services.loginUser(
+                          _emailController.text,
+                          _passwordController.text,
+                        );
+
+                        if (_formKey.currentState!.validate() &&
+                            result != null) {
+                          setState(() {
+                            loginModel = result;
+                          });
+                          Navigator.pushAndRemoveUntil(context,
+                              MaterialPageRoute(
+                            builder: (context) {
+                              return const HomeScreen();
+                            },
+                          ), (route) => false);
+                        }
                       },
                       child: const Text(
                         "Masuk",

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/models/register_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
-import 'package:flutter_loyalti_point_agent/view_model/services/register_http_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/services/register_dio.dart';
 import 'package:flutter_loyalti_point_agent/widgets/success_alert.dart';
-import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -39,7 +39,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final providerHttp = Provider.of<HttpProvider>(context, listen: false);
+    // final providerHttp = Provider.of<HttpProvider>(context);
+    RegisterModel registerModel;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -156,8 +157,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             border: InputBorder.none,
                           ),
                           validator: (password) {
-                            if (password!.isEmpty) {
-                              return 'Password tidak boleh kosong';
+                            if (password!.isEmpty && password.length < 10) {
+                              return 'Minimal 10 character';
                             }
                             return null;
                           },
@@ -207,8 +208,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
+                    onPressed: () async {
+                      RegisterModel? result = await Services.registerUser(
+                          _nameController.text,
+                          _emailController.text,
+                          _passwordController.text,
+                          _phoneNumberController.text);
+
+                      if (_formKey.currentState!.validate() && result != null) {
+                        setState(() {
+                          registerModel = result;
+                        });
+
                         showDialog(
                           context: context,
                           builder: (context) {
@@ -220,12 +231,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             );
                           },
                         );
-                        // providerHttp.connectApi(
-                        //   _nameController.text,
-                        //   _emailController.text,
-                        //   _phoneNumberController.text,
-                        //   _passwordController.text,
-                        // );
                       }
                     },
                     child: Text(

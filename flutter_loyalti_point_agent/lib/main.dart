@@ -3,7 +3,7 @@ import 'package:flutter_loyalti_point_agent/view/register_screen/onboarding_scre
 import 'package:flutter_loyalti_point_agent/view_model/bottombar_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/carousel_slider_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
-import 'package:flutter_loyalti_point_agent/view_model/services/register_http_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/services/register_dio.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => CarouselProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => HttpProvider(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (context) => HttpProvider(),
+        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
