@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
+import 'package:flutter_loyalti_point_agent/view_model/services/register_http_provider.dart';
 import 'package:flutter_loyalti_point_agent/widgets/success_alert.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -15,8 +17,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordConfirmation = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool _passwordVisible = false;
+  // bool _passwordVisible = false;
 
   @override
   void dispose() {
@@ -24,17 +27,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
     _emailController.dispose();
     _phoneNumberController.dispose();
     _passwordController.dispose();
+    _passwordConfirmation.dispose();
     super.dispose();
   }
 
-  @override
-  void initState() {
-    _passwordVisible = false;
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   _passwordVisible = false;
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final providerHttp = Provider.of<HttpProvider>(context, listen: false);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -100,6 +105,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             if (email!.isEmpty) {
                               return 'Email tidak boleh kosong';
                             }
+                            if (!RegExp(
+                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                .hasMatch(email)) {
+                              return "Please enter valid email";
+                            }
                             return null;
                           },
                         ),
@@ -138,7 +148,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: TextFormField(
                           controller: _passwordController,
                           keyboardType: TextInputType.text,
-                          obscureText: !_passwordVisible,
+                          // obscureText: !_passwordVisible,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.key_outlined),
                             hintText: "Password",
@@ -161,9 +171,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: TextFormField(
-                          controller: _passwordController,
+                          controller: _passwordConfirmation,
                           keyboardType: TextInputType.text,
-                          obscureText: !_passwordVisible,
+                          // obscureText: !_passwordVisible,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.key_outlined),
                             hintText: "Konfirmasi Password",
@@ -171,8 +181,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             border: InputBorder.none,
                           ),
                           validator: (confirmPassword) {
-                            if (confirmPassword!.isEmpty) {
-                              return 'Password tidak boleh kosong';
+                            if (_passwordConfirmation.text !=
+                                _passwordController.text) {
+                              return 'Password tidak sama';
                             }
                             return null;
                           },
@@ -209,6 +220,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             );
                           },
                         );
+                        // providerHttp.connectApi(
+                        //   _nameController.text,
+                        //   _emailController.text,
+                        //   _phoneNumberController.text,
+                        //   _passwordController.text,
+                        // );
                       }
                     },
                     child: Text(
