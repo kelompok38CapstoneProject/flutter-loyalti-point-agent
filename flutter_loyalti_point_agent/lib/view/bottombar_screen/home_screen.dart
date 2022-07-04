@@ -3,7 +3,7 @@ import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/bottombar_screen/akun_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/bottombar_screen/beranda_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/bottombar_screen/riwayat_screen.dart';
-import 'package:flutter_loyalti_point_agent/view_model/bottombar_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/bottombar_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: _pages[homescreenProvider.currentPage],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),

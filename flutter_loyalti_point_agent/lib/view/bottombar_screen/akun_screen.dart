@@ -2,9 +2,35 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/akun_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class AkunScreen extends StatelessWidget {
+class AkunScreen extends StatefulWidget {
   const AkunScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AkunScreen> createState() => _AkunScreenState();
+}
+
+class _AkunScreenState extends State<AkunScreen> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getName();
+    });
+
+    super.initState();
+  }
+
+  void getName() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    name = sharedPreferences.getString("name") ?? "";
+    phone = sharedPreferences.getString("phone") ?? "";
+    setState(() {});
+  }
+
+  String name = "";
+  String phone = "";
+  
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +53,12 @@ class AkunScreen extends StatelessWidget {
                       const SizedBox(height: 16.0),
                       Center(
                         child: Text(
-                          "Andi",
+                          name,
                           style: body2SemiBold.copyWith(color: white1),
                         ),
                       ),
                       Text(
-                        "082191791405",
+                        phone,
                         style: body2Regular.copyWith(color: white1),
                       ),
                       const SizedBox(height: 16.0),

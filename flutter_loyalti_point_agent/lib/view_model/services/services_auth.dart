@@ -35,8 +35,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_loyalti_point_agent/models/register_model.dart';
 import '../../models/login_model.dart';
 
-abstract class Services {
-  static Future<RegisterModel?> registerUser(
+class Services {
+  Future<RegisterModel?> registerUser(
       String name, String email, String password, String phoneNumber) async {
     try {
       var response =
@@ -51,15 +51,16 @@ abstract class Services {
             id: response.data["id"],
             nama: response.data["nama"],
             email: response.data["email"],
-            token: response.data["token"]);
+            token: response.data["token"],
+            );
       }
       return null;
     } catch (e) {
-      throw Exception(e.toString());
+      return null;
     }
   }
 
-  static Future<LoginModel?> loginUser(String email, String password) async {
+  Future<LoginModel?> loginUser(String email, String password) async {
     try {
       var response =
           await Dio().post("http://13.229.128.27:8080/login/", data: {
@@ -71,11 +72,12 @@ abstract class Services {
             id: response.data["id"],
             nama: response.data["nama"],
             email: response.data["email"],
-            token: response.data["token"]);
+            phone: response.data["phone"],
+            token: response.data["token"],);
       }
       return null;
     } catch (e) {
-      throw Exception(e.toString());
+      return null;
     }
   }
 }

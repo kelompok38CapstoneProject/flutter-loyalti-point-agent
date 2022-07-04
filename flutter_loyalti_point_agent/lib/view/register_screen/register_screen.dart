@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loyalti_point_agent/models/register_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
-import 'package:flutter_loyalti_point_agent/view_model/services/register_dio.dart';
-import 'package:flutter_loyalti_point_agent/widgets/success_alert.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -19,7 +18,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _passwordConfirmation = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  // bool _passwordVisible = false;
 
   @override
   void dispose() {
@@ -31,16 +29,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  // @override
-  // void initState() {
-  //   _passwordVisible = false;
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    // final providerHttp = Provider.of<HttpProvider>(context);
-    RegisterModel registerModel;
+    var registerProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -209,28 +200,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     onPressed: () async {
-                      RegisterModel? result = await Services.registerUser(
-                          _nameController.text,
-                          _emailController.text,
-                          _passwordController.text,
-                          _phoneNumberController.text);
-
-                      if (_formKey.currentState!.validate() && result != null) {
-                        setState(() {
-                          registerModel = result;
-                        });
-
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return const SuccessAlert(
-                              title: "Sukses",
-                              description: "Selamat\nPendaftaran anda berhasil",
-                              descriptionButton: "Konfirmasi",
-                              halaman: LoginScreen(),
-                            );
-                          },
-                        );
+                      if (_formKey.currentState!.validate()) {
+                        registerProvider.register(
+                            _nameController.text,
+                            _emailController.text,
+                            _passwordController.text,
+                            _phoneNumberController.text,
+                            context);
                       }
                     },
                     child: Text(

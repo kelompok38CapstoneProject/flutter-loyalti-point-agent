@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/redeem_benefit_model.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
-import 'package:flutter_loyalti_point_agent/view_model/carousel_slider_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/carousel_slider_provider.dart';
 import 'package:flutter_loyalti_point_agent/widgets/point_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BerandaScreen extends StatefulWidget {
   const BerandaScreen({Key? key}) : super(key: key);
@@ -27,6 +28,22 @@ class _BerandaScreenState extends State<BerandaScreen> {
         );
       },
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getName();
+    });
+  }
+
+  String name = "";
+
+  void getName() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    name = preferences.getString("name") ?? "";
+    setState(() {});
   }
 
   @override
@@ -55,7 +72,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Halo User",
+                                "Halo $name",
                                 style: body2Regular.copyWith(color: white1),
                               ),
                               Text(
@@ -93,6 +110,10 @@ class _BerandaScreenState extends State<BerandaScreen> {
                       color: secondary6,
                     ),
                   ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text("TOAST FLUTTER"),
+                  ),
                   const SizedBox(height: 24.0),
                   SizedBox(
                     width: double.infinity,
@@ -121,7 +142,7 @@ class _BerandaScreenState extends State<BerandaScreen> {
                               child: Column(
                                 children: [
                                   CircleAvatar(
-                                    backgroundColor: white1,
+                                    backgroundColor: primary1,
                                     radius: 32.0,
                                     child: Icon(
                                       redeemBenefitModel.icon,

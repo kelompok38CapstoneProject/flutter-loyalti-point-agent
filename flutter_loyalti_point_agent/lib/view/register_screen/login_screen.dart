@@ -1,16 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
-import 'package:flutter_loyalti_point_agent/view/bottombar_screen/beranda_screen.dart';
-import 'package:flutter_loyalti_point_agent/view/bottombar_screen/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/register_screen.dart';
-import 'package:flutter_loyalti_point_agent/view_model/password_visible_provider.dart';
-import 'package:flutter_loyalti_point_agent/view_model/services/register_dio.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/auth_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/password_visible_provider.dart';
 import 'package:provider/provider.dart';
-import '../../models/login_model.dart';
-import '../../view_model/services/login_dio.dart';
-import '../../widgets/success_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -40,8 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     var providerPassword = Provider.of<PasswordProvider>(context);
-    LoginModel loginModel;
-
+    var loginProvider = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -72,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
                           controller: _emailController,
                           decoration: InputDecoration(
                             prefixIcon: const Icon(Icons.email_outlined),
@@ -164,22 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       onPressed: () async {
-                        LoginModel? result =await Services.loginUser(
-                          _emailController.text,
-                          _passwordController.text,
-                        );
-
-                        if (_formKey.currentState!.validate() &&
-                            result != null) {
-                          setState(() {
-                            loginModel = result;
-                          });
-                          Navigator.pushAndRemoveUntil(context,
-                              MaterialPageRoute(
-                            builder: (context) {
-                              return const HomeScreen();
-                            },
-                          ), (route) => false);
+                        if (_formKey.currentState!.validate()) {
+                          loginProvider.login(_emailController.text,
+                              _passwordController.text, context);
                         }
                       },
                       child: const Text(
