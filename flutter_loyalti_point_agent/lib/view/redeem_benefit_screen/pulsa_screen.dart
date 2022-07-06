@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/benefit_pulsa_provider.dart';
 import 'package:flutter_loyalti_point_agent/widgets/pilih_pulsa_widget.dart';
 import 'package:flutter_loyalti_point_agent/widgets/point_topup_widget.dart';
 import 'package:flutter_loyalti_point_agent/widgets/search_number_widget.dart';
+import 'package:provider/provider.dart';
 
 import '../../utils/theme.dart';
 
@@ -10,6 +12,7 @@ class PulsaScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var benefitPulsa = Provider.of<BenefitPulsaProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primary6,
@@ -28,9 +31,11 @@ class PulsaScreen extends StatelessWidget {
             children: [
               const PointTopUp(),
               const SizedBox(height: 24.0),
-              const SearchNumber(
+              SearchNumber(
                 provider: "Provider: ",
-                namaProvider: "Telkomsel",
+                namaProvider: benefitPulsa.nameProviderModel != null
+                    ? benefitPulsa.nameProviderModel!.name
+                    : "Telkomsel",
                 imageUrl: "assets/images/telkomsel.png",
               ),
               const SizedBox(height: 24.0),

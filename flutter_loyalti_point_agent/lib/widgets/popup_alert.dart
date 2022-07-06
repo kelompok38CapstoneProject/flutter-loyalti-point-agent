@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../utils/theme.dart';
 
-class SuccessAlert extends StatelessWidget {
-  const SuccessAlert(
+class PopUpAlert extends StatelessWidget {
+  const PopUpAlert(
       {Key? key,
       required this.title,
       required this.description,

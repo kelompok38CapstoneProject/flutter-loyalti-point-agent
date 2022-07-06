@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/register_screen.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +99,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
           builder: (context) {
+            // return (name di sharedPrefs != null) ? const OnBoardingScreen() : const LoginScreen();
             return const OnBoardingScreen();
           },
         ), (route) => false);

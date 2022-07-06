@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/widgets/ringkasan_redeem_widget.dart';
-import 'package:flutter_loyalti_point_agent/widgets/success_alert.dart';
+import 'package:flutter_loyalti_point_agent/widgets/popup_alert.dart';
 
 import '../../utils/theme.dart';
 import '../bottombar_screen/home_screen.dart';
@@ -128,7 +128,7 @@ class RedeemPaketScreen extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        return const SuccessAlert(
+                        return const PopUpAlert(
                             title: "Sukses",
                             description:
                                 "Selamat! paket data berhasil do redeem",

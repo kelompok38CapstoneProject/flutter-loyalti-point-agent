@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/widgets/ringkasan_redeem_widget.dart';
 
 import '../../utils/theme.dart';
-import '../../widgets/success_alert.dart';
+import '../../widgets/popup_alert.dart';
 import '../bottombar_screen/home_screen.dart';
 
 class RedeemCashOutScreen extends StatelessWidget {
@@ -45,7 +45,7 @@ class RedeemCashOutScreen extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (context) {
-                        return const SuccessAlert(
+                        return const PopUpAlert(
                           title: 'Sukses',
                           description: 'Selamat!\nanda berhasil menukarkan poin',
                           descriptionButton: 'Kembali ke beranda',

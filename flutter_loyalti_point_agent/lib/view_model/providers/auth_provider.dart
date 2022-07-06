@@ -5,10 +5,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../models/login_model.dart';
 import '../../view/bottombar_screen/home_screen.dart';
 import '../../view/register_screen/login_screen.dart';
-import '../../widgets/success_alert.dart';
+import '../../widgets/popup_alert.dart';
 
 class AuthProvider with ChangeNotifier {
-  Services services = Services();
+  ServiceAuth services = ServiceAuth();
   LoginModel? loginModel;
   RegisterModel? registerModel;
 
@@ -24,17 +24,17 @@ class AuthProvider with ChangeNotifier {
 
     if (result != null) {
       registerModel = result;
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const SuccessAlert(
-            title: "Sukses",
-            description: "Selamat\nPendaftaran anda berhasil",
-            descriptionButton: "Konfirmasi",
-            halaman: LoginScreen(),
-          );
-        },
-      );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return const SuccessAlert(
+      //       title: "Sukses",
+      //       description: "Selamat\nPendaftaran anda berhasil",
+      //       descriptionButton: "Konfirmasi",
+      //       halaman: LoginScreen(),
+      //     );
+      //   },
+      // );
     }
     notifyListeners();
   }
@@ -57,7 +57,7 @@ class AuthProvider with ChangeNotifier {
       showDialog(
         context: context,
         builder: (context) {
-          return const SuccessAlert(
+          return const PopUpAlert(
               title: "Maaf",
               description: "Gagal Login",
               descriptionButton: "Tidak Berhasil Login",

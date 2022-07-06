@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/login_screen.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/auth_provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -207,6 +208,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             _passwordController.text,
                             _phoneNumberController.text,
                             context);
+                        Fluttertoast.showToast(
+                          msg:
+                              "Selamat anda telah berhasil mendaftar! Silahkan login ke akun anda...",
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.BOTTOM,
+                        );
                       }
                     },
                     child: Text(

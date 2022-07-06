@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/theme.dart';
 import '../../widgets/ringkasan_redeem_widget.dart';
-import '../../widgets/success_alert.dart';
+import '../../widgets/popup_alert.dart';
 import '../bottombar_screen/home_screen.dart';
 
 
@@ -50,7 +50,7 @@ class RedeemEmoney extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return const SuccessAlert(
+                      return const PopUpAlert(
                         title: 'Sukses',
                         description: 'Selamat! Gopay 5000 berhasil di redeem',
                         descriptionButton: 'Kembali ke beranda',

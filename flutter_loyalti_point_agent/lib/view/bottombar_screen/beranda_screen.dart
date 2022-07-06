@@ -110,10 +110,6 @@ class _BerandaScreenState extends State<BerandaScreen> {
                       color: secondary6,
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("TOAST FLUTTER"),
-                  ),
                   const SizedBox(height: 24.0),
                   SizedBox(
                     width: double.infinity,

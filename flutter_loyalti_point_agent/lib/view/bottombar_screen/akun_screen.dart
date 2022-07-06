@@ -225,7 +225,11 @@ class _AkunScreenState extends State<AkunScreen> {
                                   ],
                                 ),
                                 IconButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+                                    sharedPreferences.remove("name");
+                                    sharedPreferences.remove("phone");
+                                    sharedPreferences.remove("token");
                                     Navigator.pushAndRemoveUntil(context,
                                         MaterialPageRoute(
                                       builder: (context) {

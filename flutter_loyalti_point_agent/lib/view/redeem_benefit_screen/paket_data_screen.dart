@@ -14,7 +14,7 @@ class PaketData extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: primary6,
         title: Text(
-          'Redeem Pulsa',
+          'Redeem Paket Data',
           style: body2SemiBold.copyWith(color: white1),
         ),
         centerTitle: true,
