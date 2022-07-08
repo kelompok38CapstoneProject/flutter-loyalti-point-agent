@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/redeem_screen/redeem_pulsa_screen.dart';
 
-class PilihPulsa extends StatelessWidget {
+class PilihPulsa extends StatefulWidget {
   const PilihPulsa({Key? key}) : super(key: key);
 
+  @override
+  State<PilihPulsa> createState() => _PilihPulsaState();
+}
+
+class _PilihPulsaState extends State<PilihPulsa> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

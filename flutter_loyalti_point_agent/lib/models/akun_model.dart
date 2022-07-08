@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/view/akun_menu_screen/error_page.dart';
 import 'package:flutter_loyalti_point_agent/view/akun_menu_screen/faq_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/akun_menu_screen/hubungi_kami_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/akun_menu_screen/ubah_password_screen.dart';
@@ -29,11 +30,11 @@ var listAkunModel = [
   AkunModel(
       iconPrefix: Icons.shield,
       name: "Kebijakan Privasi",
-      halaman: const UbahProfil()),
+      halaman: const ErrorPage()),
   AkunModel(
       iconPrefix: Icons.book,
       name: "Syarat & Ketentuan",
-      halaman: const UbahProfil()),
+      halaman: const ErrorPage()),
   AkunModel(
       iconPrefix: Icons.call_outlined,
       name: "Hubungi Kami",

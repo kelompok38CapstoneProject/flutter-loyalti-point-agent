@@ -1,14 +1,30 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_loyalti_point_agent/models/name_provider_model.dart';
-import 'package:flutter_loyalti_point_agent/view_model/services/services_auth.dart';
+import 'package:flutter_loyalti_point_agent/view_model/services/services_benefit.dart';
 
 import '../../models/benefit_pulsa_model.dart';
 
 class BenefitPulsaProvider with ChangeNotifier {
-  ServiceAuth services = ServiceAuth();
+  ServiceBenefit services = ServiceBenefit();
   BenefitPulsaModel? benefitPulsaModel;
   NameProviderModel? nameProviderModel;
   List<NameProviderModel> listNameProvider = [
+    // TELKOMSEL
+    NameProviderModel(
+      name: "Telkomsel",
+      id: "1",
+      matcher: "0852",
+    ),
+    NameProviderModel(
+      name: "Telkomsel",
+      id: "1",
+      matcher: "0853",
+    ),
+    NameProviderModel(
+      name: "Telkomsel",
+      id: "1",
+      matcher: "0811",
+    ),
     NameProviderModel(
       name: "Telkomsel",
       id: "1",
@@ -20,74 +36,159 @@ class BenefitPulsaProvider with ChangeNotifier {
       matcher: "0813",
     ),
     NameProviderModel(
+      name: "Telkomsel",
+      id: "1",
+      matcher: "0821",
+    ),
+    NameProviderModel(
+      name: "Telkomsel",
+      id: "1",
+      matcher: "0822",
+    ),
+    NameProviderModel(
+      name: "Telkomsel",
+      id: "1",
+      matcher: "0851",
+    ),
+    // INDOSAT
+    NameProviderModel(
+      name: "Indosat",
+      id: "2",
+      matcher: "0857",
+    ),
+    NameProviderModel(
+      name: "Indosat",
+      id: "2",
+      matcher: "0856",
+    ),
+    NameProviderModel(
       name: "Indosat",
       id: "2",
       matcher: "0858",
     ),
+    // XL
     NameProviderModel(
       name: "XL",
       id: "3",
-      matcher: "xl",
+      matcher: "0817",
+    ),
+    NameProviderModel(
+      name: "XL",
+      id: "3",
+      matcher: "0818",
+    ),
+    NameProviderModel(
+      name: "XL",
+      id: "3",
+      matcher: "0819",
+    ),
+    NameProviderModel(
+      name: "XL",
+      id: "3",
+      matcher: "0859",
+    ),
+    NameProviderModel(
+      name: "XL",
+      id: "3",
+      matcher: "0877",
+    ),
+    NameProviderModel(
+      name: "XL",
+      id: "3",
+      matcher: "0878",
+    ),
+    // AXIS
+    NameProviderModel(
+      name: "Axis",
+      id: "4",
+      matcher: "0838",
     ),
     NameProviderModel(
       name: "Axis",
       id: "4",
-      matcher: "axis",
+      matcher: "0813",
+    ),
+    NameProviderModel(
+      name: "Axis",
+      id: "4",
+      matcher: "0832",
+    ),
+    NameProviderModel(
+      name: "Axis",
+      id: "4",
+      matcher: "0833",
+    ),
+    // SMARTFREN
+    NameProviderModel(
+      name: "Smartfren",
+      id: "5",
+      matcher: "0881",
     ),
     NameProviderModel(
       name: "Smartfren",
       id: "5",
-      matcher: "smartfren",
+      matcher: "0882",
     ),
     NameProviderModel(
-      name: "Three",
+      name: "Smartfren",
+      id: "5",
+      matcher: "0883",
+    ),
+    NameProviderModel(
+      name: "Smartfren",
+      id: "5",
+      matcher: "0884",
+    ),
+    NameProviderModel(
+      name: "Smartfren",
+      id: "5",
+      matcher: "0885",
+    ),
+    NameProviderModel(
+      name: "Smartfren",
+      id: "5",
+      matcher: "0886",
+    ),
+    NameProviderModel(
+      name: "Smartfren",
+      id: "5",
+      matcher: "0887",
+    ),
+    NameProviderModel(
+      name: "Smartfren",
+      id: "5",
+      matcher: "0888",
+    ),
+    NameProviderModel(
+      name: "Smartfren",
+      id: "5",
+      matcher: "0889",
+    ),
+    // TRI
+    NameProviderModel(
+      name: "Tri",
       id: "6",
-      matcher: "three",
+      matcher: "0896",
     ),
     NameProviderModel(
-      name: "IndiHome",
-      id: "7",
-      matcher: "indihome",
+      name: "Tri",
+      id: "6",
+      matcher: "0895",
     ),
     NameProviderModel(
-      name: "Esia",
-      id: "8",
-      matcher: "esia",
+      name: "Tri",
+      id: "6",
+      matcher: "0897",
     ),
     NameProviderModel(
-      name: "Esia",
-      id: "9",
-      matcher: "esia",
+      name: "Tri",
+      id: "6",
+      matcher: "0898",
     ),
     NameProviderModel(
-      name: "Esia",
-      id: "10",
-      matcher: "esia",
-    ),
-    NameProviderModel(
-      name: "Esia",
-      id: "11",
-      matcher: "esia",
-    ),
-    NameProviderModel(
-      name: "Esia",
-      id: "12",
-      matcher: "esia",
-    ),
-    NameProviderModel(
-      name: "Esia",
-      id: "13",
-      matcher: "esia",
-    ),
-    NameProviderModel(
-      name: "Esia",
-      id: "14",
-      matcher: "esia",
-    ),
-    NameProviderModel(
-      name: "Esia",
-      id: "15",
-      matcher: "esia",
+      name: "Tri",
+      id: "6",
+      matcher: "0899",
     ),
   ];
 

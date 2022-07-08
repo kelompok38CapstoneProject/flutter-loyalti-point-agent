@@ -21,6 +21,13 @@ class SearchNumber extends StatefulWidget {
 }
 
 class _SearchNumberState extends State<SearchNumber> {
+  final TextEditingController _phoneNumberController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var benefitProvider = Provider.of<BenefitPulsaProvider>(context);
@@ -68,6 +75,7 @@ class _SearchNumberState extends State<SearchNumber> {
                             padding: const EdgeInsets.only(left: 10.0),
                             child: Form(
                               child: TextFormField(
+                                controller: _phoneNumberController,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   border: InputBorder.none,

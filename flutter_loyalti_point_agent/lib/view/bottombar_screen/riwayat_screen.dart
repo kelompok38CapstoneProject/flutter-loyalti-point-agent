@@ -28,11 +28,118 @@ class RiwayatScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 24.0),
-                      Container(
-                        height: 24.0,
-                        width: double.infinity,
-                        decoration: const BoxDecoration(color: white1),
-                        child: const Text("A"),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 35.0),
+                        child: SizedBox(
+                          height: 24.0,
+                          width: double.infinity,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              // Urutkan
+                              InkWell(
+                                onTap: (){
+                                  debugPrint("Urutkan");
+                                },
+                                child: Container(
+                                  height: 28,
+                                  width: 75,
+                                  decoration: const BoxDecoration(
+                                    color: white1,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30.0),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.sort),
+                                        Text(
+                                          "Urutkan",
+                                          style: body4Medium.copyWith(
+                                            color: black1,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Sukses
+                              InkWell(
+                                onTap: (){
+                                  debugPrint("Sukses");
+                                },
+                                child: Container(
+                                  height: 28,
+                                  width: 75,
+                                  decoration: const BoxDecoration(
+                                    color: success5,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30.0),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Sukses",
+                                      style: body4Medium.copyWith(
+                                        color: black1,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              //Pending
+                              InkWell(
+                                onTap: (){
+                                  debugPrint("Pending");
+                                },
+                                child: Container(
+                                  height: 28,
+                                  width: 75,
+                                  decoration: const BoxDecoration(
+                                    color: warning4,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30.0),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Pending",
+                                      style: body4Medium.copyWith(
+                                        color: black1,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              // Gagal
+                              InkWell(
+                                onTap: (){
+                                  debugPrint("Gagal");
+                                },
+                                child: Container(
+                                  height: 28,
+                                  width: 75,
+                                  decoration: const BoxDecoration(
+                                    color: danger4,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(30.0),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Gagal",
+                                      style: body4Medium.copyWith(
+                                        color: black1,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),

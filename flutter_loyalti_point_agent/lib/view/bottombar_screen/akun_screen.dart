@@ -41,6 +41,7 @@ class _AkunScreenState extends State<AkunScreen> {
             children: [
               Stack(
                 children: [
+                  // BACKGROUND
                   Container(
                     decoration: const BoxDecoration(
                       color: primary6,
@@ -51,17 +52,20 @@ class _AkunScreenState extends State<AkunScreen> {
                   Column(
                     children: [
                       const SizedBox(height: 16.0),
+                      // NAME
                       Center(
                         child: Text(
                           name,
                           style: body2SemiBold.copyWith(color: white1),
                         ),
                       ),
+                      // PHONE NUMBER
                       Text(
                         phone,
                         style: body2Regular.copyWith(color: white1),
                       ),
                       const SizedBox(height: 16.0),
+                      // CONTAINER BUTTON
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30.0),
                         child: Container(
@@ -124,6 +128,7 @@ class _AkunScreenState extends State<AkunScreen> {
                 ],
               ),
               const SizedBox(height: 24.0),
+              // LIST MENU AKUN
               SizedBox(
                 height: 444.0,
                 width: double.infinity,
@@ -192,6 +197,7 @@ class _AkunScreenState extends State<AkunScreen> {
                 ),
               ),
               const SizedBox(height: 24.0),
+              // BUTTON KELUAR
               SizedBox(
                 height: 60,
                 width: double.infinity,

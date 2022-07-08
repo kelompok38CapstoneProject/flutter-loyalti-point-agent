@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-
 import '../utils/theme.dart';
 
-class PointWidget extends StatelessWidget {
+class PointWidget extends StatefulWidget {
   const PointWidget({Key? key}) : super(key: key);
 
   @override
+  State<PointWidget> createState() => _PointWidgetState();
+}
+
+class _PointWidgetState extends State<PointWidget> {
+
+  @override
   Widget build(BuildContext context) {
+
     return Container(
       width: double.infinity,
       height: 41.0,
@@ -35,7 +41,7 @@ class PointWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "10.000",
+                  "10",
                   style: body4SemiBold.copyWith(color: secondary6),
                 ),
                 IconButton(

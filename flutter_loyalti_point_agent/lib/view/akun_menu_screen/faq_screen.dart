@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/faq_model.dart';
 import '../../utils/theme.dart';
-import 'package:accordion/accordion.dart';
 
 class PertanyaanFAQ extends StatefulWidget {
   const PertanyaanFAQ({Key? key}) : super(key: key);
@@ -11,6 +10,7 @@ class PertanyaanFAQ extends StatefulWidget {
 }
 
 class _PertanyaanFAQState extends State<PertanyaanFAQ> {
+  final List<bool> _isOpen = [true, false];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +88,7 @@ class _PertanyaanFAQState extends State<PertanyaanFAQ> {
                                                 horizontal: 23.5,
                                                 vertical: 29.0),
                                             child: Column(
-                                              children: [
+                                              children: <Widget>[
                                                 Row(
                                                   children: [
                                                     IconButton(
@@ -107,57 +107,33 @@ class _PertanyaanFAQState extends State<PertanyaanFAQ> {
                                                     ),
                                                   ],
                                                 ),
-                                                Accordion(
-                                                  headerBackgroundColor: secondary3,
-                                                  headerBackgroundColorOpened: secondary1,
-                                                  maxOpenSections: 1,
-                                                  children: [
-                                                    AccordionSection(
-                                                      isOpen: true,
-                                                      header: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 15.0),
-                                                        child: Text(
-                                                          faqModel.pertanyaan1,
-                                                          style: body4Medium
-                                                              .copyWith(
-                                                                  color: dark5),
-                                                        ),
-                                                      ),
-                                                      headerBorderRadius: 5.0,
-                                                      contentBorderWidth: 1,
-                                                      contentBorderColor:
-                                                          light5,
-                                                      contentBorderRadius: 5.0,
-                                                      content: const Text(
-                                                          'This is the introduction right here ...'),
+                                                ExpansionPanelList(
+                                                  expansionCallback: (i, isOpen) {
+                                                    setState(() {
+                                                      _isOpen[i] = !isOpen;
+                                                    });
+                                                  },
+                                                  children: <ExpansionPanel>[
+                                                    ExpansionPanel(
+                                                      headerBuilder: (context,
+                                                              isOpen) =>
+                                                          Text(faqModel
+                                                              .pertanyaan1),
+                                                      body: Text(
+                                                          faqModel.penjelasan1),
+                                                      isExpanded: _isOpen[0],
                                                     ),
-                                                    AccordionSection(
-                                                      isOpen: true,
-                                                      header: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                vertical: 15.0),
-                                                        child: Text(
-                                                          faqModel.pertanyaan2,
-                                                          style: body4Medium
-                                                              .copyWith(
-                                                                  color: dark5),
-                                                        ),
-                                                      ),
-                                                      headerBorderRadius: 5.0,
-                                                      contentBorderWidth: 1,
-                                                      contentBorderColor:
-                                                          light5,
-                                                      contentBorderRadius: 5.0,
-                                                      content: const Text(
-                                                          'This is the introduction right here ...'),
+                                                    ExpansionPanel(
+                                                      headerBuilder: (context,
+                                                              isOpen) =>
+                                                          Text(faqModel
+                                                              .pertanyaan2),
+                                                      body: Text(
+                                                          faqModel.penjelasan2),
+                                                      isExpanded: _isOpen[1],
                                                     ),
                                                   ],
-                                                ),
+                                                )
                                               ],
                                             ),
                                           ),
@@ -187,12 +163,12 @@ class _PertanyaanFAQState extends State<PertanyaanFAQ> {
                               ),
                             ),
                             const SizedBox(height: 25.0),
-                            Expanded(
-                              child: Text(
-                                faqModel.pertanyaan2,
-                                style: body4Regular.copyWith(color: dark1),
-                              ),
-                            ),
+                            // Expanded(
+                            //   child: Text(
+                            //     faqModel.pertanyaan2,
+                            //     style: body4Regular.copyWith(color: dark1),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
