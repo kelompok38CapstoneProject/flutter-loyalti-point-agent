@@ -24,17 +24,6 @@ class AuthProvider with ChangeNotifier {
 
     if (result != null) {
       registerModel = result;
-      // showDialog(
-      //   context: context,
-      //   builder: (context) {
-      //     return const SuccessAlert(
-      //       title: "Sukses",
-      //       description: "Selamat\nPendaftaran anda berhasil",
-      //       descriptionButton: "Konfirmasi",
-      //       halaman: LoginScreen(),
-      //     );
-      //   },
-      // );
     }
     notifyListeners();
   }
@@ -45,6 +34,8 @@ class AuthProvider with ChangeNotifier {
     if (result != null) {
       loginModel = result;
       SharedPreferences preferences = await SharedPreferences.getInstance();
+
+      preferences.setString("id", loginModel!.id.toString());
       preferences.setString("name", loginModel!.nama);
       preferences.setString("token", loginModel!.token);
       preferences.setString("phone", loginModel!.phone);

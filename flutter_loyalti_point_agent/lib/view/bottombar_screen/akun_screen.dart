@@ -233,6 +233,7 @@ class _AkunScreenState extends State<AkunScreen> {
                                 IconButton(
                                   onPressed: () async {
                                     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+                                    sharedPreferences.remove("id");
                                     sharedPreferences.remove("name");
                                     sharedPreferences.remove("phone");
                                     sharedPreferences.remove("token");

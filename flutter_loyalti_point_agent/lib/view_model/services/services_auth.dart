@@ -7,13 +7,15 @@ class ServiceAuth {
   Future<RegisterModel?> registerUser(
       String name, String email, String password, String phoneNumber) async {
     try {
-      var response =
-          await Dio().post("http://13.229.128.27:8080/singup/", data: {
-        "name": name,
-        "email": email,
-        "password": password,
-        "phone": phoneNumber,
-      });
+      var response = await Dio().post(
+        "http://13.229.128.27:8080/singup/",
+        data: {
+          "name": name,
+          "email": email,
+          "password": password,
+          "phone": phoneNumber,
+        },
+      );
       if (response.statusCode == 200) {
         return RegisterModel(
           id: response.data["id"],
@@ -50,6 +52,4 @@ class ServiceAuth {
       return null;
     }
   }
-
-  
 }

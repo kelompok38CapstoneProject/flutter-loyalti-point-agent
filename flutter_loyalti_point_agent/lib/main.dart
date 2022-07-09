@@ -7,6 +7,8 @@ import 'package:flutter_loyalti_point_agent/view_model/providers/carousel_slider
 import 'package:flutter_loyalti_point_agent/view_model/providers/password_visible_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'view_model/providers/user_update_provider.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -33,6 +35,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => BenefitPulsaProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => UserUpdateProvider(),
         ),
       ],
       child: MaterialApp(
