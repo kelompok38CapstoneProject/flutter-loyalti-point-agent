@@ -166,6 +166,9 @@ class _UbahProfilState extends State<UbahProfil> {
                         ),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      // setState(() {
+                      //   name = _namaController.text;
+                      // });
                     }
                   },
                   child: Text(
