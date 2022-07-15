@@ -49,7 +49,9 @@ class _PilihPulsaState extends State<PilihPulsa> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const RedeemPulsa();
+                    return RedeemPulsa(
+                      benefits: getPulsa.benefitPulsaModel!.benefits![index],
+                    );
                   },
                 ),
               );

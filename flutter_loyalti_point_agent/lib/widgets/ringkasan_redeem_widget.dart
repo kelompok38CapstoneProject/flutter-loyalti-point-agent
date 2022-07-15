@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/models/benefit_pulsa_model.dart';
 
 import '../utils/theme.dart';
 
 class RingkasanRedeem extends StatefulWidget {
-  const RingkasanRedeem({Key? key}) : super(key: key);
+  const RingkasanRedeem({Key? key, required this.benefits}) : super(key: key);
+  final Benefits benefits;
 
   @override
   State<RingkasanRedeem> createState() => _RingkasanRedeemState();
@@ -56,7 +58,7 @@ class _RingkasanRedeemState extends State<RingkasanRedeem> {
                   style: body4Regular.copyWith(color: dark1),
                 ),
                 Text(
-                  "Rp. 10.000",
+                  "Rp. ${widget.benefits.price}",
                   style: body4Regular.copyWith(color: secondary6),
                 ),
               ],
@@ -70,7 +72,7 @@ class _RingkasanRedeemState extends State<RingkasanRedeem> {
                   style: body4Regular.copyWith(color: dark1),
                 ),
                 Text(
-                  "Telkomsel",
+                  widget.benefits.benefitCategory!.description.toString(),
                   style: body4Regular.copyWith(color: secondary6),
                 ),
               ],
@@ -84,7 +86,7 @@ class _RingkasanRedeemState extends State<RingkasanRedeem> {
                   style: body4Regular.copyWith(color: dark1),
                 ),
                 Text(
-                  "Rp. 10.000",
+                  "${widget.benefits.price} Point",
                   style: body4Regular.copyWith(color: secondary6),
                 ),
               ],
@@ -103,7 +105,8 @@ class _RingkasanRedeemState extends State<RingkasanRedeem> {
                   style: body4Medium.copyWith(color: dark9),
                 ),
                 Text(
-                  "Rp. 10.000",
+                  // "Rp. 10.000",
+                  "${widget.benefits.price} Point",
                   style: body4SemiBold.copyWith(color: danger7),
                 ),
               ],

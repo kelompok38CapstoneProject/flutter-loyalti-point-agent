@@ -24,7 +24,7 @@ class RedeemCashOutScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
         child: Column(
           children: [
-            const RingkasanRedeem(),
+            // const RingkasanRedeem(),
             Expanded(child: Container()),
             Center(
               child: SizedBox(

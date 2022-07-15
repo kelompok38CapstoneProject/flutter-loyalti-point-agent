@@ -118,7 +118,7 @@ class RedeemPaketScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16.0),
-            const RingkasanRedeem(),
+            // const RingkasanRedeem(),
             Expanded(child: Container()),
             SizedBox(
               width: 315.0,

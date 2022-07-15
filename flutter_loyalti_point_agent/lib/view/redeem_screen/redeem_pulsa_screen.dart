@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/models/benefit_pulsa_model.dart';
 import 'package:flutter_loyalti_point_agent/view/bottombar_screen/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/widgets/ringkasan_redeem_widget.dart';
 import 'package:flutter_loyalti_point_agent/widgets/popup_alert.dart';
@@ -6,7 +7,9 @@ import 'package:flutter_loyalti_point_agent/widgets/popup_alert.dart';
 import '../../utils/theme.dart';
 
 class RedeemPulsa extends StatelessWidget {
-  const RedeemPulsa({Key? key}) : super(key: key);
+  const RedeemPulsa({Key? key, required this.benefits}) : super(key: key);
+
+  final Benefits benefits;
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +18,7 @@ class RedeemPulsa extends StatelessWidget {
         backgroundColor: primary6,
         title: Text(
           'Detail Redeem',
+          // "${benefits.name}",
           style: body2SemiBold.copyWith(color: white1),
         ),
         centerTitle: true,
@@ -29,7 +33,7 @@ class RedeemPulsa extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const RingkasanRedeem(),
+            RingkasanRedeem(benefits: benefits),
             Expanded(child: Container()),
             SizedBox(
               width: 315,
@@ -46,6 +50,7 @@ class RedeemPulsa extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
+                  
                   showDialog(
                     context: context,
                     builder: (context) {

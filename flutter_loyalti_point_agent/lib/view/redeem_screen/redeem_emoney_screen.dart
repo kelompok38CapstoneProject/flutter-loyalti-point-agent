@@ -30,7 +30,7 @@ class RedeemEmoney extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const RingkasanRedeem(),
+            // const RingkasanRedeem(),
             Expanded(child: Container()),
             SizedBox(
               width: 315,
