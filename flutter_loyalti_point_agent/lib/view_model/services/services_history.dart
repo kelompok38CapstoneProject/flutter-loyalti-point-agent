@@ -16,10 +16,7 @@ class ServiceHistory {
       );
 
       if (response.statusCode == 200) {
-        // return TransactionHistoryModel.fromJson(response.data);
-        return TransactionHistoryModel(
-          userTransactions: response.data["user_id"],
-        );
+        return TransactionHistoryModel.fromJson(response.data);
       }
       return null;
     } catch (e) {

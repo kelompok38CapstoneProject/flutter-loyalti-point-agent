@@ -33,7 +33,7 @@ class _PilihPulsaState extends State<PilihPulsa> {
   @override
   Widget build(BuildContext context) {
     var getPulsa = Provider.of<BenefitPulsaProvider>(context);
-    return SizedBox(
+    return getPulsa.benefitPulsaModel == null ? const SizedBox() : SizedBox(
       height: 350,
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

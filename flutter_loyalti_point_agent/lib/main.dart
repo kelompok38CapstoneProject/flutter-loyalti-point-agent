@@ -5,6 +5,7 @@ import 'package:flutter_loyalti_point_agent/view_model/providers/benefit_pulsa_p
 import 'package:flutter_loyalti_point_agent/view_model/providers/bottombar_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/carousel_slider_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/password_visible_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/transaction_history_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/user_point_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => UserPointProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TransactionHistoryProvider(),
         ),
       ],
       child: MaterialApp(

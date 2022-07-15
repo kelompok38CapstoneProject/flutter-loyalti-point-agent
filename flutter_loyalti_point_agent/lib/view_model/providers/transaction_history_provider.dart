@@ -11,7 +11,6 @@ class TransactionHistoryProvider with ChangeNotifier {
         await services.getHistoryTransaction(id, token);
     if (result != null) {
       transactionHistoryModel = result;
-      print(transactionHistoryModel!.userTransactions);
     } else {
       print("error");
     }
