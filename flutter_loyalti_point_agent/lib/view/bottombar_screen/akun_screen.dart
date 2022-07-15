@@ -26,11 +26,11 @@ class _AkunScreenState extends State<AkunScreen> {
     name = sharedPreferences.getString("name") ?? "";
     phone = sharedPreferences.getString("phone") ?? "";
     setState(() {});
+    // print(name);
   }
 
   String name = "";
   String phone = "";
-  
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +175,9 @@ class _AkunScreenState extends State<AkunScreen> {
                                           builder: (context) =>
                                               akunModel.halaman,
                                         ),
-                                      );
+                                      ).then((value) {
+                                        getName();
+                                      });
                                     },
                                     icon: const Icon(
                                       Icons.arrow_forward_ios,
@@ -232,7 +234,8 @@ class _AkunScreenState extends State<AkunScreen> {
                                 ),
                                 IconButton(
                                   onPressed: () async {
-                                    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+                                    SharedPreferences sharedPreferences =
+                                        await SharedPreferences.getInstance();
                                     sharedPreferences.remove("id");
                                     sharedPreferences.remove("name");
                                     sharedPreferences.remove("phone");

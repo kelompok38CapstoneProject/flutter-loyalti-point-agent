@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/models/user_point_model.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/user_point_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -16,18 +17,22 @@ class _PointWidgetState extends State<PointWidget> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<UserPointProvider>(context, listen: false)
-          .getUserPoint(id, token);
+      getId();
     });
   }
 
   String id = "";
+  // int point = 0;
   String token = "";
 
   void getId() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     id = preferences.getString("id") ?? "";
     token = preferences.getString("token") ?? "";
+    Provider.of<UserPointProvider>(context, listen: false)
+        .getUserPoint(id, token);
+    // point = preferences.getInt("point") ?? 0;
+    setState(() {});
   }
 
   @override
@@ -61,14 +66,11 @@ class _PointWidgetState extends State<PointWidget> {
             Row(
               children: [
                 Text(
-                  // "10",
-                  getPoint.userPointModel?.point.toString() ?? "10",
+                  getPoint.userPointModel?.point.toString() ?? "0",
                   style: body4SemiBold.copyWith(color: secondary6),
                 ),
                 IconButton(
-                  onPressed: () {
-                    // print("A");
-                  },
+                  onPressed: () async {},
                   icon: const Icon(Icons.chevron_right_outlined),
                 ),
               ],

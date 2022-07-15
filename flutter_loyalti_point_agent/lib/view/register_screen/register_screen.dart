@@ -126,6 +126,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           validator: (phoneNumber) {
                             if (phoneNumber!.isEmpty) {
                               return 'phoneNumber tidak boleh kosong';
+                            } else if (phoneNumber.length < 12) {
+                              return 'Nomor Telephone tidak boleh kurang dari 12 digit';
                             }
                             return null;
                           },

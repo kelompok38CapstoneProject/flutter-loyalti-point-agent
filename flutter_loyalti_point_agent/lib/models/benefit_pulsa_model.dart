@@ -1,43 +1,45 @@
 class BenefitPulsaModel {
+  int? id;
+  int? benefitCategoryId;
+  BenefitCategory? benefitCategory;
+  String? name;
+  String? description;
+  int? price;
+  int? stock;
+
   BenefitPulsaModel({
-    required this.id,
-    required this.benefitCategoryId,
-    required this.benefitCategory,
-    required this.name,
-    required this.description,
-    required this.price,
-    required this.stock,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.deletedAt,
+    this.id,
+    this.benefitCategoryId,
+    this.benefitCategory,
+    this.name,
+    this.description,
+    this.price,
+    this.stock,
   });
 
-  int id;
-  int benefitCategoryId;
-  BenefitCategory benefitCategory;
-  String name;
-  String description;
-  int price;
-  int stock;
-  DateTime createdAt;
-  DateTime updatedAt;
-  dynamic deletedAt;
+  BenefitPulsaModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    benefitCategoryId = json['benefit_category_id'];
+    benefitCategory = json['BenefitCategory'] != null
+        ? new BenefitCategory.fromJson(json['BenefitCategory'])
+        : null;
+    name = json['name'];
+    description = json['description'];
+    price = json['price'];
+    stock = json['stock'];
+  }
 }
 
 class BenefitCategory {
-  BenefitCategory({
-    required this.id,
-    required this.name,
-    required this.description,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.deletedAt,
-  });
+  int? id;
+  String? name;
+  String? description;
 
-  int id;
-  String name;
-  String description;
-  DateTime createdAt;
-  DateTime updatedAt;
-  dynamic deletedAt;
+  BenefitCategory({this.id, this.name, this.description});
+
+  BenefitCategory.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    description = json['description'];
+  }
 }

@@ -192,18 +192,29 @@ class BenefitPulsaProvider with ChangeNotifier {
     ),
   ];
 
-  void searchNumberPhone(String numberPhone) {
-    if (numberPhone.length >= 4) {
-      listNameProvider.forEach((element) async {
-        if (element.matcher ==
-            numberPhone[0] + numberPhone[1] + numberPhone[2] + numberPhone[3]) {
-          nameProviderModel = element;
-          //Taruh service disini
-          benefitPulsaModel = await services.benefit(element.id);
-        }
-      });
-    } else {
-      nameProviderModel = null;
+  // void searchNumberPhone(String numberPhone) {
+  //   if (numberPhone.length >= 4) {
+  //     listNameProvider.forEach((element) async {
+  //       if (element.matcher ==
+  //           numberPhone[0] + numberPhone[1] + numberPhone[2] + numberPhone[3]) {
+  //         nameProviderModel = element;
+  //         //Taruh service disini
+  //         benefitPulsaModel = await services.benefit(
+  //           element.id,
+  //         );
+  //       }
+  //     });
+  //   } else {
+  //     nameProviderModel = null;
+  //   }
+  //   notifyListeners();
+  // }
+
+  void getBenefit(String id, String token) async {
+    BenefitPulsaModel? result = await services.benefit(id, token);
+
+    if (result != null) {
+      benefitPulsaModel = result;
     }
     notifyListeners();
   }

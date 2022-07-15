@@ -1,12 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/user_point_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/theme.dart';
 
-class PointTopUp extends StatelessWidget {
+class PointTopUp extends StatefulWidget {
   const PointTopUp({Key? key}) : super(key: key);
 
   @override
+  State<PointTopUp> createState() => _PointTopUpState();
+}
+
+class _PointTopUpState extends State<PointTopUp> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getId();
+    });
+  }
+
+  String id = "";
+  // int point = 0;
+  String token = "";
+
+  void getId() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    id = preferences.getString("id") ?? "";
+    token = preferences.getString("token") ?? "";
+    Provider.of<UserPointProvider>(context, listen: false)
+        .getUserPoint(id, token);
+    // point = preferences.getInt("point") ?? 0;
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var getPoint = Provider.of<UserPointProvider>(context);
     return Container(
       width: double.infinity,
       height: 50.0,
@@ -34,7 +65,9 @@ class PointTopUp extends StatelessWidget {
                 ),
                 const SizedBox(width: 10.0),
                 Text(
-                  "10.000 Poin",
+                  // "10.000 Poin",
+                  getPoint.userPointModel?.point.toString() ?? "0",
+
                   style: body3SemiBold.copyWith(color: secondary6),
                 ),
               ],

@@ -5,25 +5,21 @@ class ServiceBenefit{
   
   // GET BENEFIT PULSA
   Future<BenefitPulsaModel?> benefit(
-    String id,
+    String id, String token
   ) async {
     try {
       var response = await Dio().get(
-        "http://13.229.128.27:8080/benefit/$id",
+        "http://13.250.122.4:8080/benefits/$id",
       );
       if (response.statusCode == 200) {
         return BenefitPulsaModel(
-          id: response.data["id"],
-          benefitCategoryId: response.data["benefit_category_id"],
-          benefitCategory: response.data["benefit_category"]["name"],
-          // BenefitCategory.fromJson(response.data["BenefitCategory"]),
-          name: response.data["name"],
-          description: response.data["description"],
-          price: response.data["price"],
-          stock: response.data["stock"],
-          createdAt: DateTime.parse(response.data["CreatedAt"]),
-          updatedAt: DateTime.parse(response.data["UpdatedAt"]),
-          deletedAt: response.data["DeletedAt"],
+          id: response.data['id'],
+          benefitCategory: response.data['benefitCategory'],
+          benefitCategoryId: response.data['benefitCategoryId'],
+          name: response.data['name'],
+          description: response.data['description'],
+          price: response.data['price'],
+          stock: response.data['stock'],
         );
       }
       return null;

@@ -4,11 +4,10 @@ import 'package:flutter_loyalti_point_agent/models/user_update_model.dart';
 
 class ServicesUser {
   // GET USER POINT
-  Future<UserPointModel?> getPointUser(
-      String id, String token ) async {
+  Future<UserPointModel?> getPointUser(String id, String token) async {
     try {
       final response = await Dio().get(
-        "http://13.229.128.27:8080/users/$id",
+        "http://13.250.122.4:8080/users/$id",
         options: Options(
           headers: {
             "authorization": "bearer $token",
@@ -17,19 +16,11 @@ class ServicesUser {
       );
 
       if (response.statusCode == 200) {
-        return UserPointModel(
-          id: response.data["id"],
-          name: response.data["name"],
-          email: response.data["email"],
-          password: response.data["password"],
-          phone: response.data["phone"],
-          role: response.data["role"],
-          point: response.data["point"],
-          deletedAt: response.data["DeletedAt"],
-        );
+        return UserPointModel.fromJson(response.data);
       }
       return null;
     } catch (e) {
+      print(e.toString());
       return null;
     }
   }
@@ -39,7 +30,7 @@ class ServicesUser {
       String name, String id, String token) async {
     try {
       var response = await Dio().put(
-        "http://13.229.128.27:8080/users/$id",
+        "http://13.250.122.4:8080/users/$id",
         options: Options(
           headers: {
             "authorization": "bearer $token",
@@ -49,7 +40,7 @@ class ServicesUser {
           "name": name,
         },
       );
-
+      // print(response.statusCode);
       if (response.statusCode == 200) {
         return UserUpdateModel(
           id: response.data["id"],
@@ -62,6 +53,7 @@ class ServicesUser {
       }
       return null;
     } catch (e) {
+      // print(e.toString());
       return null;
     }
   }

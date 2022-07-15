@@ -83,9 +83,9 @@ class _SearchNumberState extends State<SearchNumber> {
                                   hintStyle:
                                       body4Regular.copyWith(color: secondary6),
                                 ),
-                                onChanged: (value) {
-                                  benefitProvider.searchNumberPhone(value);
-                                },
+                                // onChanged: (value) {
+                                //   benefitProvider.searchNumberPhone(value);
+                                // },
                                 autovalidateMode: AutovalidateMode.always,
                                 validator: (value) {
                                   if (value!.length < 10) {

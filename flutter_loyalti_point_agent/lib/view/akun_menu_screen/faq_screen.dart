@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loyalti_point_agent/models/faq_model.dart';
 import '../../utils/theme.dart';
 
 class PertanyaanFAQ extends StatefulWidget {
@@ -10,7 +9,10 @@ class PertanyaanFAQ extends StatefulWidget {
 }
 
 class _PertanyaanFAQState extends State<PertanyaanFAQ> {
-  final List<bool> _isOpen = [true, false];
+  bool _isExpanded1 = false;
+  bool _isExpanded2 = false;
+  bool _isExpanded3 = false;
+  bool _isExpanded4 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,158 +26,166 @@ class _PertanyaanFAQState extends State<PertanyaanFAQ> {
         toolbarHeight: 94.0,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
         child: Column(
           children: [
-            Container(
-              height: 41.0,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: light2,
-                borderRadius: BorderRadius.circular(20.0),
-                border: Border.all(
-                  color: light10,
-                  width: 1.0,
-                ),
-              ),
-              child: Form(
-                child: TextFormField(
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    prefixIcon: const Icon(
-                      Icons.search_outlined,
-                      color: black1,
+            // 1
+            ExpansionPanelList(
+              elevation: 4.0,
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  _isExpanded1 = !isExpanded;
+                });
+              },
+              children: [
+                // pertama
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  isExpanded: _isExpanded1,
+                  headerBuilder: (context, isExpanded) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Apakah PointsApss itu?",
+                            style: body4Medium.copyWith(color: black1),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  body: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      "PointApps merupakan aplikasi untuk penukaran point yang pengguna dapatkan dari berbelanja di merchant merchant tertentu",
+                      style: body4Medium.copyWith(color: black1),
+                      textAlign: TextAlign.start,
                     ),
-                    hintText: 'Contoh "Pertanyaan"',
-                    hintStyle: body3Regular.copyWith(color: light10),
                   ),
                 ),
-              ),
+              ],
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: listPertanyaan.length,
-                itemBuilder: (context, index) {
-                  final FaqModel faqModel = listPertanyaan[index];
-                  return Card(
-                    elevation: 2.0,
-                    child: SizedBox(
-                      height: 215.0,
-                      width: 342.0,
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  faqModel.judul,
-                                  style:
-                                      body3Medium.copyWith(color: secondary6),
-                                ),
-                                IconButton(
-                                  onPressed: () {
-                                    showModalBottomSheet(
-                                      isScrollControlled: true,
-                                      context: context,
-                                      builder: (context) {
-                                        return FractionallySizedBox(
-                                          heightFactor: 0.8,
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 23.5,
-                                                vertical: 29.0),
-                                            child: Column(
-                                              children: <Widget>[
-                                                Row(
-                                                  children: [
-                                                    IconButton(
-                                                      onPressed: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      icon: const Icon(Icons
-                                                          .chevron_left_outlined),
-                                                    ),
-                                                    Text(
-                                                      faqModel.judul,
-                                                      style:
-                                                          body2Medium.copyWith(
-                                                        color: secondary6,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                ExpansionPanelList(
-                                                  expansionCallback: (i, isOpen) {
-                                                    setState(() {
-                                                      _isOpen[i] = !isOpen;
-                                                    });
-                                                  },
-                                                  children: <ExpansionPanel>[
-                                                    ExpansionPanel(
-                                                      headerBuilder: (context,
-                                                              isOpen) =>
-                                                          Text(faqModel
-                                                              .pertanyaan1),
-                                                      body: Text(
-                                                          faqModel.penjelasan1),
-                                                      isExpanded: _isOpen[0],
-                                                    ),
-                                                    ExpansionPanel(
-                                                      headerBuilder: (context,
-                                                              isOpen) =>
-                                                          Text(faqModel
-                                                              .pertanyaan2),
-                                                      body: Text(
-                                                          faqModel.penjelasan2),
-                                                      isExpanded: _isOpen[1],
-                                                    ),
-                                                  ],
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    );
-                                  },
-                                  icon: const Icon(Icons.arrow_forward_ios,
-                                      color: secondary6),
-                                ),
-                              ],
-                            ),
-                            const Divider(
-                              color: light10,
-                            ),
-                            Expanded(
-                              child: Text(
-                                faqModel.pertanyaan1,
-                                style: body4Regular.copyWith(color: dark1),
-                              ),
-                            ),
-                            const SizedBox(height: 25.0),
-                            Expanded(
-                              child: Text(
-                                faqModel.pertanyaan2,
-                                style: body4Regular.copyWith(color: dark1),
-                              ),
-                            ),
-                            const SizedBox(height: 25.0),
-                            // Expanded(
-                            //   child: Text(
-                            //     faqModel.pertanyaan2,
-                            //     style: body4Regular.copyWith(color: dark1),
-                            //   ),
-                            // ),
-                          ],
-                        ),
+            const SizedBox(height: 4),
+            // 2
+            ExpansionPanelList(
+              elevation: 4.0,
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  _isExpanded2 = !isExpanded;
+                });
+              },
+              children: [
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  isExpanded: _isExpanded2,
+                  headerBuilder: (context, isExpanded) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Apakah Poin memiliki batas penukaran?",
+                            style: body4Medium.copyWith(color: black1),
+                          ),
+                        ],
                       ),
+                    );
+                  },
+                  body: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      "Penukaran dapat dilakukan hanya jika point yang dimiliki lebih besar atau sesuai dengan harga benefit yang ingin ditukar",
+                      style: body4Medium.copyWith(color: black1),
+                      textAlign: TextAlign.start,
                     ),
-                  );
-                },
-              ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            // 3
+            ExpansionPanelList(
+              elevation: 4.0,
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  _isExpanded3 = !isExpanded;
+                });
+              },
+              children: [
+                // ketiga
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  isExpanded: _isExpanded3,
+                  headerBuilder: (context, isExpanded) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Bagaiamana cara menukarkan poin?",
+                            style: body4Medium.copyWith(color: black1),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  body: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      "Tentukan pilihan benefit yang ingin ditukar dan klik tombol 'Tukar'",
+                      style: body4Medium.copyWith(color: black1),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 4),
+            // 4
+            ExpansionPanelList(
+              elevation: 4.0,
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  _isExpanded4 = !isExpanded;
+                });
+              },
+              children: [
+                // keempat
+                ExpansionPanel(
+                  canTapOnHeader: true,
+                  isExpanded: _isExpanded4,
+                  headerBuilder: (context, isExpanded) {
+                    return Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Apakah saya dapat mengganti data saya?",
+                            style: body4Medium.copyWith(color: black1),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  body: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      "PointApps merupakan aplikasi untuk penukaran point yang pengguna dapatkan dari berbelanja di merchant merchant tertentu",
+                      style: body4Medium.copyWith(color: black1),
+                      // textAlign: TextAlign.start,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

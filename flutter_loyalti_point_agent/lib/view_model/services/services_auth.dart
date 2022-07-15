@@ -8,7 +8,7 @@ class ServiceAuth {
       String name, String email, String password, String phoneNumber) async {
     try {
       var response = await Dio().post(
-        "http://13.229.128.27:8080/singup/",
+        "http://13.250.122.4:8080/singup/",
         data: {
           "name": name,
           "email": email,
@@ -34,7 +34,7 @@ class ServiceAuth {
   Future<LoginModel?> loginUser(String email, String password) async {
     try {
       var response =
-          await Dio().post("http://13.229.128.27:8080/login/user", data: {
+          await Dio().post("http://13.250.122.4:8080/login/user", data: {
         "email": email,
         "password": password,
       });

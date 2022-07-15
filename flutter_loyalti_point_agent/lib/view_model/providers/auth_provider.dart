@@ -34,7 +34,6 @@ class AuthProvider with ChangeNotifier {
     if (result != null) {
       loginModel = result;
       SharedPreferences preferences = await SharedPreferences.getInstance();
-
       preferences.setString("id", loginModel!.id.toString());
       preferences.setString("name", loginModel!.nama);
       preferences.setString("token", loginModel!.token);

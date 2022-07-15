@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
 import 'package:flutter_loyalti_point_agent/view/redeem_screen/redeem_pulsa_screen.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/benefit_pulsa_provider.dart';
+import 'package:flutter_loyalti_point_agent/view_model/providers/user_point_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PilihPulsa extends StatefulWidget {
   const PilihPulsa({Key? key}) : super(key: key);
@@ -11,7 +15,28 @@ class PilihPulsa extends StatefulWidget {
 
 class _PilihPulsaState extends State<PilihPulsa> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getId();
+    });
+  }
+
+  String id = "";
+  String token = "";
+
+  void getId() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    id = preferences.getString("id") ?? "";
+    token = preferences.getString("token") ?? "";
+    Provider.of<BenefitPulsaProvider>(context, listen: false)
+        .getBenefit(id, token);
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
+    var getPulsa = Provider.of<BenefitPulsaProvider>(context);
     return SizedBox(
       height: 350,
       child: GridView.builder(
@@ -21,11 +46,14 @@ class _PilihPulsaState extends State<PilihPulsa> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(
-                builder: (context) {
-                  return const RedeemPulsa();
-                },
-              ));
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const RedeemPulsa();
+                  },
+                ),
+              );
             },
             child: Container(
               decoration: BoxDecoration(

@@ -81,12 +81,12 @@ class _UbahProfilState extends State<UbahProfil> {
                     hintStyle: body3Regular.copyWith(color: light9),
                     border: InputBorder.none,
                   ),
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Nama Lengkap tidak boleh kosong';
-                    }
-                    return null;
-                  },
+                  // validator: (value) {
+                  //   if (value!.isEmpty) {
+                  //     return 'Nama Lengkap tidak boleh kosong';
+                  //   }
+                  //   return null;
+                  // },
                 ),
               ),
               const SizedBox(height: 24.0),
@@ -154,21 +154,21 @@ class _UbahProfilState extends State<UbahProfil> {
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      updateProvider.updateUserName(_namaController.text, id, token);
+                      updateProvider.updateUserName(
+                          _namaController.text, id, token);
+
                       final snackBar = SnackBar(
                         content: const Text('Berhasil mengubah profil'),
                         action: SnackBarAction(
-                          label: 'Dismiss',
+                          label: 'Kembali',
                           onPressed: () {
                             ScaffoldMessenger.of(context)
                                 .removeCurrentSnackBar();
+                            Navigator.of(context).pop();
                           },
                         ),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      // setState(() {
-                      //   name = _namaController.text;
-                      // });
                     }
                   },
                   child: Text(
