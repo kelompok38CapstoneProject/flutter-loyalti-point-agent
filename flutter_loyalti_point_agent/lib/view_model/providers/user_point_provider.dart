@@ -17,9 +17,7 @@ class UserPointProvider with ChangeNotifier {
       preferences.setString("id", userPointModel!.id.toString());
       preferences.setInt("point", userPointModel!.point ?? 0);
     } else {
-      print(
-        "error",
-      );
+      print("error");
     }
     notifyListeners();
   }

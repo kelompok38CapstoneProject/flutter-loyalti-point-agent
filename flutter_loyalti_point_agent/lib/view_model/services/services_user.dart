@@ -40,7 +40,6 @@ class ServicesUser {
           "name": name,
         },
       );
-      // print(response.statusCode);
       if (response.statusCode == 200) {
         return UserUpdateModel(
           id: response.data["id"],
@@ -53,7 +52,7 @@ class ServicesUser {
       }
       return null;
     } catch (e) {
-      // print(e.toString());
+      print(e.toString());
       return null;
     }
   }

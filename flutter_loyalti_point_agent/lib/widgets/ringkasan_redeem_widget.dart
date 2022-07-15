@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../utils/theme.dart';
 
-class RingkasanRedeem extends StatelessWidget {
+class RingkasanRedeem extends StatefulWidget {
   const RingkasanRedeem({Key? key}) : super(key: key);
 
+  @override
+  State<RingkasanRedeem> createState() => _RingkasanRedeemState();
+}
+
+class _RingkasanRedeemState extends State<RingkasanRedeem> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -156,7 +156,6 @@ class _UbahProfilState extends State<UbahProfil> {
                     if (_formKey.currentState!.validate()) {
                       updateProvider.updateUserName(
                           _namaController.text, id, token);
-
                       final snackBar = SnackBar(
                         content: const Text('Berhasil mengubah profil'),
                         action: SnackBarAction(

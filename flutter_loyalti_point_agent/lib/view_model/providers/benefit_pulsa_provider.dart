@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_loyalti_point_agent/models/name_provider_model.dart';
 import 'package:flutter_loyalti_point_agent/view_model/services/services_benefit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/benefit_pulsa_model.dart';
 
@@ -210,11 +211,16 @@ class BenefitPulsaProvider with ChangeNotifier {
   //   notifyListeners();
   // }
 
-  void getBenefit(String id, String token) async {
-    BenefitPulsaModel? result = await services.benefit(id, token);
-
+  void getBenefit(String token) async {
+    BenefitPulsaModel? result = await services.benefit(token);
     if (result != null) {
       benefitPulsaModel = result;
+      // print(benefitPulsaModel!.name!);
+      // SharedPreferences preferences = await SharedPreferences.getInstance();
+      // preferences.setString("id", benefitPulsaModel!.id.toString());
+      // preferences.setString("name", benefitPulsaModel!.name ?? "");
+    } else {
+      print("error benefit");
     }
     notifyListeners();
   }

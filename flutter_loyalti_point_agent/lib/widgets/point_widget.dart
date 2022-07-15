@@ -22,7 +22,6 @@ class _PointWidgetState extends State<PointWidget> {
   }
 
   String id = "";
-  // int point = 0;
   String token = "";
 
   void getId() async {
@@ -31,7 +30,6 @@ class _PointWidgetState extends State<PointWidget> {
     token = preferences.getString("token") ?? "";
     Provider.of<UserPointProvider>(context, listen: false)
         .getUserPoint(id, token);
-    // point = preferences.getInt("point") ?? 0;
     setState(() {});
   }
 
