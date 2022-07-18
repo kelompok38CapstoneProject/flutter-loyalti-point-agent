@@ -217,20 +217,39 @@ class _RiwayatScreenState extends State<RiwayatScreen> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(
-                                                      // "Pulsa",
-                                                      getHistory
-                                                          .transactionHistoryModel!
-                                                          .userTransactions![
-                                                              index]
-                                                          .benefit!
-                                                          .benefitCategory!
-                                                          .name
-                                                          .toString(),
-                                                      style: body2SemiBold
-                                                          .copyWith(
-                                                              color:
-                                                                  secondary6),
+                                                    Row(
+                                                      children: [
+                                                        Text(
+                                                          // "Pulsa",
+                                                          getHistory
+                                                              .transactionHistoryModel!
+                                                              .userTransactions![
+                                                                  index]
+                                                              .benefit!
+                                                              .benefitCategory!
+                                                              .name
+                                                              .toString(),
+                                                          style: body2SemiBold
+                                                              .copyWith(
+                                                                  color:
+                                                                      secondary6),
+                                                        ),
+                                                        const SizedBox(width: 4,),
+                                                        Text(
+                                                          getHistory
+                                                              .transactionHistoryModel!
+                                                              .userTransactions![
+                                                                  index]
+                                                              .benefit!
+                                                              .benefitCategory!
+                                                              .description
+                                                              .toString(),
+                                                          style: body2SemiBold
+                                                              .copyWith(
+                                                                  color:
+                                                                      secondary6),
+                                                        ),
+                                                      ],
                                                     ),
                                                     const SizedBox(height: 4.0),
                                                     Text(

@@ -1,18 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/models/benefit_pulsa_model.dart';
-import 'package:flutter_loyalti_point_agent/view/bottombar_screen/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/widgets/ringkasan_redeem_widget.dart';
-import 'package:flutter_loyalti_point_agent/widgets/popup_alert.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/theme.dart';
+import '../../view_model/providers/transaction_benefit_provider.dart';
 
-class RedeemPulsa extends StatelessWidget {
+class RedeemPulsa extends StatefulWidget {
   const RedeemPulsa({Key? key, required this.benefits}) : super(key: key);
 
   final Benefits benefits;
 
   @override
+  State<RedeemPulsa> createState() => _RedeemPulsaState();
+}
+
+class _RedeemPulsaState extends State<RedeemPulsa> {
+
+    @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      getToken();
+    });
+  }
+  String id = "";
+  String token = "";
+
+  void getToken() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    id = preferences.getString("id") ?? "";
+    token = preferences.getString("token") ?? "";
+    setState(() {});
+  }
+
+  
+  @override
   Widget build(BuildContext context) {
+    int? user_id = int.tryParse(id);
+    int benefit_id = widget.benefits.id!;
+    var postBenefit = Provider.of<TransactionBenefitProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primary6,
@@ -33,7 +61,7 @@ class RedeemPulsa extends StatelessWidget {
         ),
         child: Column(
           children: [
-            RingkasanRedeem(benefits: benefits),
+            RingkasanRedeem(benefits: widget.benefits),
             Expanded(child: Container()),
             SizedBox(
               width: 315,
@@ -50,18 +78,9 @@ class RedeemPulsa extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return const PopUpAlert(
-                        title: 'Sukses',
-                        description: 'Selamat! pulsa berhasil di redeem',
-                        descriptionButton: 'Kembali ke beranda',
-                        halaman: HomeScreen(),
-                      );
-                    },
-                  );
+                  postBenefit.postTransaction(token, user_id!, benefit_id, context);
+                  // print(id);
+                  // print("kalo ini $user_id");
                 },
                 child: Text(
                   "Redeem Sekarang",
