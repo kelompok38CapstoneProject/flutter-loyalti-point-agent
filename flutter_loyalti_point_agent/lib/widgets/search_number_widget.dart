@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loyalti_point_agent/view_model/providers/benefit_pulsa_provider.dart';
-import 'package:provider/provider.dart';
+// import 'package:flutter_loyalti_point_agent/view_model/providers/benefit_pulsa_provider.dart';
+// import 'package:provider/provider.dart';
 
 import '../utils/theme.dart';
 
@@ -30,7 +30,7 @@ class _SearchNumberState extends State<SearchNumber> {
 
   @override
   Widget build(BuildContext context) {
-    var benefitProvider = Provider.of<BenefitPulsaProvider>(context);
+    // var benefitProvider = Provider.of<BenefitPulsaProvider>(context);
     return Container(
       width: double.infinity,
       height: 180,

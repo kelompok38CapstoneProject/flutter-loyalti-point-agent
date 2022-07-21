@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loyalti_point_agent/widgets/ringkasan_redeem_widget.dart';
 import 'package:flutter_loyalti_point_agent/widgets/popup_alert.dart';
 
 import '../../utils/theme.dart';

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../utils/theme.dart';
-import '../../widgets/ringkasan_redeem_widget.dart';
 import '../../widgets/popup_alert.dart';
 import '../bottombar_screen/home_screen.dart';
 

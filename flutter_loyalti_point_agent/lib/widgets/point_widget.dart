@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_loyalti_point_agent/models/user_point_model.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/user_point_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
