@@ -17,14 +17,14 @@ class RedeemPulsa extends StatefulWidget {
 }
 
 class _RedeemPulsaState extends State<RedeemPulsa> {
-
-    @override
+  @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       getToken();
     });
   }
+
   String id = "";
   String token = "";
 
@@ -35,7 +35,6 @@ class _RedeemPulsaState extends State<RedeemPulsa> {
     setState(() {});
   }
 
-  
   @override
   Widget build(BuildContext context) {
     int? user_id = int.tryParse(id);
@@ -78,7 +77,8 @@ class _RedeemPulsaState extends State<RedeemPulsa> {
                   ),
                 ),
                 onPressed: () {
-                  postBenefit.postTransaction(token, user_id!, benefit_id, context);
+                  postBenefit.postTransaction(
+                      token, user_id!, benefit_id, context);
                   // print(id);
                   // print("kalo ini $user_id");
                 },

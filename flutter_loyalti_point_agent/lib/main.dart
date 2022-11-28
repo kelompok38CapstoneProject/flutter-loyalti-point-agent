@@ -9,7 +9,6 @@ import 'package:flutter_loyalti_point_agent/view_model/providers/transaction_ben
 import 'package:flutter_loyalti_point_agent/view_model/providers/transaction_history_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/user_point_provider.dart';
 import 'package:provider/provider.dart';
-
 import 'view_model/providers/user_update_provider.dart';
 
 void main() {

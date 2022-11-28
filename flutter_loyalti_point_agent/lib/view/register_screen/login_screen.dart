@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_loyalti_point_agent/utils/theme.dart';
+import 'package:flutter_loyalti_point_agent/view/bottombar_screen/beranda_screen.dart';
+import 'package:flutter_loyalti_point_agent/view/bottombar_screen/home_screen.dart';
 import 'package:flutter_loyalti_point_agent/view/register_screen/register_screen.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/auth_provider.dart';
 import 'package:flutter_loyalti_point_agent/view_model/providers/password_visible_provider.dart';
@@ -156,11 +158,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          loginProvider.login(_emailController.text,
-                              _passwordController.text, context);
-                        }
+                      // onPressed: () async {
+                      //   if (_formKey.currentState!.validate()) {
+                      //     loginProvider.login(_emailController.text,
+                      //         _passwordController.text, context);
+                      //   }
+                      // },
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return HomeScreen();
+                          },
+                        ));
                       },
                       child: const Text(
                         "Masuk",
