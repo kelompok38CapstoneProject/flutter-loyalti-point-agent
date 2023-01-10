@@ -158,19 +158,19 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      // onPressed: () async {
-                      //   if (_formKey.currentState!.validate()) {
-                      //     loginProvider.login(_emailController.text,
-                      //         _passwordController.text, context);
-                      //   }
-                      // },
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) {
-                            return HomeScreen();
-                          },
-                        ));
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          loginProvider.login(_emailController.text,
+                              _passwordController.text, context);
+                        }
                       },
+                      // onPressed: () {
+                      //   Navigator.push(context, MaterialPageRoute(
+                      //     builder: (context) {
+                      //       return HomeScreen();
+                      //     },
+                      //   ));
+                      // },
                       child: const Text(
                         "Masuk",
                         style: TextStyle(
